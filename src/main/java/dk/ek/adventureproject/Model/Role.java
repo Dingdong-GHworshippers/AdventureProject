@@ -10,16 +10,15 @@ public enum Role {
         this.prettyprint = prettyprint;
     }
 
-    //Changes "LAPRIMA" to "La Prima"
     @Override
     public String toString() {
         return prettyprint;
     }
 
     public static Role fromString(String value) {
-        for (Role carEquipment : Role.values()) {
-            if (carEquipment.prettyprint.equalsIgnoreCase(value)) {
-                return carEquipment;
+        for (Role role : Role.values()) {
+            if (role.prettyprint.equalsIgnoreCase(value)) {
+                return role;
             }
         }
         return null;
