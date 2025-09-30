@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.Model.enums;
 
 public enum Role {
     MANAGER ("Manager"),

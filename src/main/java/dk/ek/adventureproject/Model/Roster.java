@@ -4,10 +4,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
+@Table (name = "roster")
 public class Roster {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +25,9 @@ public class Roster {
     public Roster() {
 
     }
-    public Roster(LocalDate date, Employee employee) {
+    public Roster(LocalDate date, Employee employees ) {
         this.date = date;
-        this.employee = employee;
+        this.employee = employees;
     }
 
 }
