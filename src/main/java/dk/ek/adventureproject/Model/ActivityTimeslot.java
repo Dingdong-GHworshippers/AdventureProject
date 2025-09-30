@@ -15,13 +15,13 @@ public class ActivityTimeslot {
     @Id
     private Long id;
 
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 
-    public ActivityTimeslot(Long id, LocalDateTime startDate, LocalDateTime endDate) {
+    public ActivityTimeslot(Long id, LocalDateTime startTime, LocalDateTime endTime) {
         this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
     public ActivityTimeslot() {
 
