@@ -1,7 +1,7 @@
 package dk.ek.adventureproject.Service;
 
 import dk.ek.adventureproject.Model.Product;
-import dk.ek.adventureproject.Model.ProductType;
+import dk.ek.adventureproject.Model.enums.ProductType;
 import dk.ek.adventureproject.repo.ProductRepository;
 import org.springframework.stereotype.Service;
 
