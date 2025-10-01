@@ -18,10 +18,12 @@ public class BookingService {
 
     private final BookingRepository bookingRepository;
 
+    // Returns all bookings
     public List<Booking> getAllBookings(){
         return bookingRepository.findAll();
     }
 
+    // Returns booking by booking id
     public Booking getBookingById(Long id){
         Optional<Booking> optionalBooking = bookingRepository.findById(id);
 
@@ -32,11 +34,13 @@ public class BookingService {
         return optionalBooking.get();
     }
 
+    // Creates booking and sets id to null as it is auto-incremented
     public Booking createBooking(Booking booking){
         booking.setId(null);
         return bookingRepository.save(booking);
     }
 
+    // Updates booking and iterates through timeslots and updates them aswell
     public Booking updateBooking(Long id, Booking booking){
         Optional<Booking> optionalBooking = bookingRepository.findById(id);
         if (optionalBooking.isEmpty()){
@@ -60,6 +64,7 @@ public class BookingService {
         return bookingRepository.save(updatedBooking);
     }
 
+    // Deletes booking
     public void deleteBooking(Long id){
         Optional<Booking> optionalBooking = bookingRepository.findById(id);
 
