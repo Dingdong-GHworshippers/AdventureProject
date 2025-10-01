@@ -1,5 +1,6 @@
 package dk.ek.adventureproject.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,8 @@ public class Customer {
     String email;
     int phoneNumber;
 
-    @OneToMany (mappedBy = "customer")
+    @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private Set<Booking> bookings = new HashSet<>();
 
     public Customer(){}
