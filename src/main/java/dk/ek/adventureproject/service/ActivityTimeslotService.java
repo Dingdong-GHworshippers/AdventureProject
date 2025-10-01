@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.service;
+package dk.ek.adventureproject.Service;
 
 import dk.ek.adventureproject.Model.ActivityTimeslot;
 import dk.ek.adventureproject.repo.ActivityTimeslotRepository;

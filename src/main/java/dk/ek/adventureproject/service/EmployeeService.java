@@ -1,19 +1,19 @@
-package dk.ek.adventureproject.service;
+package dk.ek.adventureproject.Service;
 
 import dk.ek.adventureproject.Model.Employee;
-import dk.ek.adventureproject.repositories.EmployeeRepo;
+import dk.ek.adventureproject.repo.EmployeeRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
-
     private final EmployeeRepo employeeRepo;
-    public EmployeeService(EmployeeRepo employeeRepo) {
-        this.employeeRepo = employeeRepo;
-    }
+
+
     // Create
     public Employee createEmployee(Employee employee) {
         return employeeRepo.save(employee);

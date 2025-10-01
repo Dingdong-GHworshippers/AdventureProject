@@ -3,19 +3,19 @@ package dk.ek.adventureproject.Service;
 import dk.ek.adventureproject.Model.Product;
 import dk.ek.adventureproject.Model.ProductType;
 import dk.ek.adventureproject.repo.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
+
 public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     public List<Product> findByType(ProductType type) {
         return productRepository.findByType(type);

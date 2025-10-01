@@ -1,9 +1,10 @@
-package dk.ek.adventureproject.service;
+package dk.ek.adventureproject.Service;
 
 import dk.ek.adventureproject.Model.Employee;
 import dk.ek.adventureproject.Model.Roster;
-import dk.ek.adventureproject.repositories.EmployeeRepo;
-import dk.ek.adventureproject.repositories.RosterRepo;
+import dk.ek.adventureproject.repo.EmployeeRepo;
+import dk.ek.adventureproject.repo.RosterRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -11,15 +12,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
+
 public class RosterService {
 
     private final RosterRepo rosterRepo;
     private final EmployeeRepo employeeRepo;
-
-    public RosterService(RosterRepo rosterRepo, EmployeeRepo employeeRepo) {
-        this.rosterRepo = rosterRepo;
-        this.employeeRepo = employeeRepo;
-    }
+    
 
     // Create
     public Roster createRoster(Roster roster) {
