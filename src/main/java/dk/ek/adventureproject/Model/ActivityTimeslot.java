@@ -14,8 +14,14 @@ public class ActivityTimeslot {
     @Id
     private Long id;
 
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+  
+    public ActivityTimeslot(Long id, LocalDateTime startTime, LocalDateTime endTime) {
+      this.id = id;
+      this.startTime = startTime;
+      this.endTime = endTime;
+    }
 
     @ManyToOne
     @JoinColumn (name = "activity_id")
@@ -25,12 +31,7 @@ public class ActivityTimeslot {
     @JoinColumn (name = "booking_id")
     private Booking booking;
 
-    public ActivityTimeslot(Long id, LocalDateTime startDate, LocalDateTime endDate) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
     public ActivityTimeslot() {
-
     }
+  
 }
