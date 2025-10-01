@@ -1,5 +1,6 @@
 package dk.ek.adventureproject.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dk.ek.adventureproject.Model.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Employee {
     private Role role;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Roster> rosters = new ArrayList<>();
 
     public Employee(String userName, String password, Role role) {
