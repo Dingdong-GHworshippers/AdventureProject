@@ -35,4 +35,14 @@ public class Employee {
     public Employee() {
 
     }
+
+    public void addRoster(Roster roster) {
+        rosters.add(roster);
+        roster.setEmployee(this);
+    }
+
+    public void removeRoster(Roster roster) {
+        rosters.remove(roster);
+        roster.setEmployee(null);
+    }
 }
