@@ -32,7 +32,7 @@ public class BookingController {
         return ResponseEntity.ok(booking);
     }
 
-    // Creates booking - maybe needs validation through @Valid?
+    // Creates booking
     @PostMapping
     public ResponseEntity<Booking> createBooking(@RequestBody Booking booking){
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.createBooking(booking));

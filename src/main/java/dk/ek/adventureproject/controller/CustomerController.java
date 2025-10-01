@@ -2,6 +2,7 @@ package dk.ek.adventureproject.controller;
 
 import dk.ek.adventureproject.Model.Customer;
 import dk.ek.adventureproject.Service.CustomerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -54,14 +55,14 @@ public class CustomerController {
 
     // Creates customer
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
+    public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer){
 
         return ResponseEntity.status(HttpStatus.CREATED).body(customerService.createCustomer(customer));
     }
 
     // Updates customer. Throws not found status if invalid id
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer){
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @Valid @RequestBody Customer customer){
         if (customerService.getCustomerById(id) == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
