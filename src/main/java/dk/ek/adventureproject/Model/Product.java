@@ -1,5 +1,6 @@
 package dk.ek.adventureproject.Model;
 
+import dk.ek.adventureproject.Model.enums.ProductType;
 import jakarta.persistence.*;
 import java.util.*;
 
@@ -14,11 +15,11 @@ public class Product {
 
     private double price;
 
-    @OneToMany
-    private List<Bookingorder> bookingorders;
+    public Product(long id, ProductType type, double price) {
+        this.id = id;
+        this.type = type;
+        this.price = price;
+    }
 
-}
- enum ProductType{
-    FOOD,DRINK, MERCHANDISE,
-
+    public Product(){}
 }

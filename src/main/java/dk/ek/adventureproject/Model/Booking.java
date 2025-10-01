@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,7 +20,7 @@ public class Booking {
     private LocalDate date;
 
     @OneToMany (mappedBy = "booking", cascade = CascadeType.ALL)
-    private List<TimeSlot> timeSlots;
+    private List<ActivityTimeslot> activityTimeslots = new ArrayList<>();
 
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "booking_product_id" )
@@ -27,4 +29,14 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    public Booking(){}
+
+    public Booking(Long id, LocalDate date, List<ActivityTimeslot> activityTimeslots, BookingOrder bookingOrder, Customer customer) {
+        this.id = id;
+        this.date = date;
+        this.activityTimeslots = activityTimeslots;
+        this.bookingOrder = bookingOrder;
+        this.customer = customer;
+    }
 }
