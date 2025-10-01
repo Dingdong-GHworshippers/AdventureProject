@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.repositories;
+package dk.ek.adventureproject.repo;
 
 import dk.ek.adventureproject.Model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;

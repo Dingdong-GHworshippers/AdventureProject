@@ -1,7 +1,8 @@
 package dk.ek.adventureproject.Service;
 
 import dk.ek.adventureproject.Model.Product;
-import dk.ek.adventureproject.Repository.ProductRepository;
+import dk.ek.adventureproject.Model.ProductType;
+import dk.ek.adventureproject.repo.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,11 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+
+    public List<Product> findByType(ProductType type) {
+        return productRepository.findByType(type);
+    }
+
     public List<Product> findAll() {
         return productRepository.findAll();
     }
