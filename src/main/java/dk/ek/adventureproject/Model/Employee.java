@@ -26,6 +26,11 @@ public class Employee {
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Roster> rosters = new ArrayList<>();
 
+
+    // Reverse relation to Timeslots, not sure if needed, could potentially be used to show an employees rosterplan.
+    @ManyToMany(mappedBy = "employees")
+    private List<ActivityTimeslot> activityTimeslots = new ArrayList<>();
+
     public Employee(String userName, String password, Role role) {
         this.userName = userName;
         this.password = password;
