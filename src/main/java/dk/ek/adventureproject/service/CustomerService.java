@@ -16,14 +16,17 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
+    // Returns all
     public List<Customer> getAllCustomers(){
         return customerRepository.findAll();
     }
 
+    // Returns by name. Custom method made in repository
     public List<Customer> getCustomerByName(String name){
         return customerRepository.getByNameContainingIgnoreCase(name);
     }
 
+    // Returns by customer id
     public Customer getCustomerById(Long id){
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
         if (optionalCustomer.isPresent()){
@@ -32,11 +35,13 @@ public class CustomerService {
         return null;
     }
 
+    // Creates customer. Sets id to null as this is auto-incremented
     public Customer createCustomer(Customer customer){
         customer.setId(null);
         return customerRepository.save(customer);
     }
 
+    // Updates customer and iterates through bookings and updates them as well
     public Customer updateCustomer(Long id, Customer customer){
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
 
@@ -60,6 +65,7 @@ public class CustomerService {
         return customerRepository.save(updatedCustomer);
     }
 
+    // Deletes customer
     public void deleteCustomer(Long id){
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
 
