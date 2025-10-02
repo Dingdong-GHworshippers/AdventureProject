@@ -1,5 +1,6 @@
 package dk.ek.adventureproject.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +21,7 @@ public class Roster {
 
     @ManyToOne
     @JoinColumn(name = "employee_id") // foreign key in roster table
+    @JsonBackReference
     private Employee employee;
 
     public Roster() {
