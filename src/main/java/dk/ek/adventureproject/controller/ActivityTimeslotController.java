@@ -23,7 +23,7 @@ public class ActivityTimeslotController {
         return ResponseEntity.ok(activityTimeslotService.getAllActivityTimeslots());
     }
 
-    @GetMapping
+    @GetMapping("/by-date")
     public ResponseEntity<List<ActivityTimeslot>> getTimeslotsByDate(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date){
         return ResponseEntity.ok(activityTimeslotService.getActivityTimeSlotsByDate(date));
 
