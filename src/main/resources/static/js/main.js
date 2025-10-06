@@ -3,11 +3,13 @@ class AppHeader extends HTMLElement {
         this.innerHTML = `
       <header>
         <nav>
+          <img src="/static/img/AA.png" alt="Adventure Alley Logo" class="logo">
+          <div class="nav-links">
           <a href="index.html">Forside</a>
           <a href="booking.html">Booking</a>
           <a href="contact.html">Kontakt</a>
           <a href="gallery.html">Galleri</a>
-
+         </div>
         </nav>
       </header>
     `;
@@ -23,7 +25,7 @@ class AppFooter extends HTMLElement {
   <div class="column">
     <a href="AboutUs.html"> Kort om os </a>
     <p>
-      Hos Adventure Alley brænder vi for at skabe uforglemmelige oplevelser for både private og virksomheder.
+     Hos Adventure Alley brænder vi for at skabe uforglemmelige oplevelser for både private og virksomheder.
     Vi tilbyder actionfyldte aktiviteter som gokart, paintball, sumobrydning og minigolf – alt sammen designet til at styrke fællesskab, konkurrence og grin.
     Vores mål er at give dig en dag fyldt med energi, sammenhold og sjove udfordringer, uanset om du kommer alene, med familien eller som del af et team.
     </p>
