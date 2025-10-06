@@ -1,0 +1,167 @@
+/*footer*/
+.footerMainDiv{
+    display: flex;
+    width: 100%;
+    background-color: #5cae63;
+}
+
+.column{
+    background-color: inherit;
+    text-align: left;
+    flex: 1;
+    color: white;
+    padding-top: 1%;
+    max-width: 100%;
+}
+
+.column a{
+    padding-left: 5%;
+}
+
+.column p{
+    margin: 5%;
+    margin-top: 1%;
+    width: 100%;
+}
+
+.column img{
+    width: 100%;
+    height: auto;
+    padding-left: 10%
+}
+
+.socials-column{
+    background-color: inherit;
+    flex: 1;
+    max-width: 100%;
+    padding-left: 7%;
+}
+
+.socials-column-row{
+    align-items: center;
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.socials-column-text-box{
+    padding-top: 0;
+    text-align: center;
+    padding-right: 5%;
+}
+
+.socials-column-text-box h1{
+    font-size: 20px;
+}
+
+.image-container-socials{
+    width: 100%;
+    flex: 1;
+    align-items: center;
+}
+
+.image-container-socials img{
+    width: 80%;
+    transition: all 0.3s ease;
+}
+
+.image-container-socials:hover {
+    transform: scale(1.125);
+}
+
+.image-container-socials:hover p {
+    position: relative;
+    top: 5%;
+}
+
+.image-container-socials:hover img{
+    position: relative;
+    top: 5%;
+    transform: scale(1.25);
+}
+
+.last-column{
+    background-color: inherit;
+    color: white;
+    padding-left: 10%;
+    flex: 1;
+    text-align: left;
+    display: block;
+}
+
+.last-column h2{
+    font-size: 20px;
+}
+
+.last-column h1{
+    font-size: 18px;
+}
+
+.last-column p{
+    margin: 0;
+}
+
+#extra-padding-left{
+    padding-left: 5%;
+}
+
+#padding-for-volunteer-image{
+    padding-top: 5%;
+}
+
+#center{
+    text-align: center;
+    padding-bottom: 1%;
+    padding-left: 5%;
+}
+
+/*header*/
+ header {
+     background-color: #0f5132; /* dark green */
+     color: white;
+     padding: 1rem 0;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+ }
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+nav a {
+    color: #d1fae5; /* light green text */
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #22c55e; /* bright green */
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #86efac; /* lighter green */
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
