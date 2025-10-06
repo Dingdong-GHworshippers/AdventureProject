@@ -1,0 +1,21 @@
+name: Java + Javascript CI #continous integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+
+jobs:
+  java-test:
+    uses: adventureproject/.github/workflows/java-test-reusable.yml
+
+  docker-ci:
+    needs: java-test
+    uses: adventureproject/.github/workflows/docker-ci-reusable.yml
+
