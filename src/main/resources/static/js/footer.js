@@ -1,20 +1,3 @@
-class AppHeader extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
-      <header>
-        <nav>
-          <a href="index.html">Forside</a>
-          <a href="booking.html">Booking</a>
-          <a href="contact.html">Kontakt</a>
-          <a href="gallery.html">Galleri</a>
-
-        </nav>
-      </header>
-    `;
-    }
-}
-customElements.define('app-header', AppHeader);
-
 class AppFooter extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -96,7 +79,6 @@ class AppFooter extends HTMLElement {
           <img src="/static/img/bluesky.png">
         </div>
       </a>
-
 
       <a href="https://whatsapp.com/" target="_blank">
         <div class="image-container-socials">
