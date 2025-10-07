@@ -14,7 +14,7 @@ env:
 jobs:
   # Using the reusable workflow for Java tests
   java-test:
-    uses: adventureproject/.github/workflows/java-test-reusable.yml
+    uses: /.github/workflows/java-test-reusable.yml
 
   # Build & push Docker image (after tests pass)
   build-and-push:
