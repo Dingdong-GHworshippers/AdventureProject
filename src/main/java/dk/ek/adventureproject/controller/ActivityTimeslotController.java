@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/timeslot")
 @RequiredArgsConstructor
 public class ActivityTimeslotController {
 

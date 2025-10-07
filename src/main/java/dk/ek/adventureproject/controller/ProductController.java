@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Controller;
+package dk.ek.adventureproject.controller;
 
 import dk.ek.adventureproject.Model.Product;
 import dk.ek.adventureproject.Model.enums.ProductType;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 @RequiredArgsConstructor
 public class ProductController {
 

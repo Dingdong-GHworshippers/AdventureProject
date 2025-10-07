@@ -3,7 +3,7 @@ class AppHeader extends HTMLElement {
         this.innerHTML = `
       <header>
         <nav>
-          <img src="/static/img/AA.png" alt="Adventure Alley Logo" class="logo">
+          <img src="/img/AA.png" alt="Adventure Alley Logo" class="logo">
           <div class="nav-links">
           <a href="index.html">Forside</a>
           <a href="booking.html">Booking</a>

@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Controller;
+package dk.ek.adventureproject.controller;
 
 import dk.ek.adventureproject.Model.BookingOrder;
 import dk.ek.adventureproject.Service.BookingOrderService;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/booking-orders")
+@RequestMapping("/api/booking-orders")
 public class BookingOrderController {
 
     private final BookingOrderService bookingOrderService;
