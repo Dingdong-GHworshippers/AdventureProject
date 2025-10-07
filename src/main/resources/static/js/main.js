@@ -3,7 +3,7 @@ class AppHeader extends HTMLElement {
         this.innerHTML = `
       <header>
         <nav>
-          <img src="/static/img/AA.png" alt="Adventure Alley Logo" class="logo">
+          <img src="/img/AA.png" alt="Adventure Alley Logo" class="logo">
           <div class="nav-links">
           <a href="index.html">Forside</a>
           <a href="booking.html">Booking</a>
@@ -33,7 +33,7 @@ class AppFooter extends HTMLElement {
 
   <div id="center" class="column">
     <a href="gallery.html"> Se nogle billeder fra glade familier her! </a>
-    <img id="padding-for-volunteer-image" src="/static/img/gocart.jpg">
+    <img id="padding-for-volunteer-image" src="/img/gocart.jpg">
   </div>
 
   <div class="socials-column">
@@ -44,20 +44,20 @@ class AppFooter extends HTMLElement {
     <div class="socials-column-row">
       <a href="https://www.facebook.com/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/fb.png">
+          <img src="/img/fb.png">
         </div>
       </a>
 
       <a href="https://www.instagram.com/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/insta.png">
+          <img src="/img/insta.png">
         </div>
       </a>
 
 
       <a href="https://www.tiktok.com/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/tiktok.png">
+          <img src="/img/tiktok.png">
         </div>
       </a>
 
@@ -66,21 +66,21 @@ class AppFooter extends HTMLElement {
     <div class="socials-column-row">
       <a href="https://youtube.com/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/youtube.png">
+          <img src="/img/youtube.png">
         </div>
       </a>
 
 
       <a href="https://x.com/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/x.png">
+          <img src="/img/x.png">
         </div>
       </a>
 
 
       <a href="https://linkedin.com/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/linkedin.png">
+          <img src="/img/linkedin.png">
         </div>
       </a>
     </div>
@@ -88,20 +88,20 @@ class AppFooter extends HTMLElement {
     <div class="socials-column-row">
       <a href="https://github.com/itsHarning/Projekt3_Gruppe_3" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/github.png">
+          <img src="/img/github.png">
         </div>
       </a>
 
 
       <a href="https://bsky.app/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/bluesky.png">
+          <img src="/img/bluesky.png">
         </div>
       </a>
 
       <a href="https://whatsapp.com/" target="_blank">
         <div class="image-container-socials">
-          <img src="/static/img/whatsapp.png">
+          <img src="/img/whatsapp.png">
         </div>
       </a>
     </div>
