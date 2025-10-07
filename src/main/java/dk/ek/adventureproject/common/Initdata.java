@@ -1,8 +1,10 @@
 package dk.ek.adventureproject.common;
 
+import dk.ek.adventureproject.Model.Activity;
 import dk.ek.adventureproject.Model.Employee;
 import dk.ek.adventureproject.Model.Roster;
 import dk.ek.adventureproject.Model.enums.Role;
+import dk.ek.adventureproject.repo.ActivityRepository;
 import dk.ek.adventureproject.repo.EmployeeRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
@@ -17,6 +19,8 @@ import java.time.LocalDate;
 public class Initdata implements CommandLineRunner {
 
     private final EmployeeRepo employeeRepo;
+    private final ActivityRepository repo;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -37,5 +41,9 @@ public class Initdata implements CommandLineRunner {
         // Persist employees (cascade = ALL will save rosters too)
         employeeRepo.save(alice);
         employeeRepo.save(bob);
+
+        repo.save(new Activity(1L, "Gokart", "Race mod dine venner", 299.0));
+        repo.save(new Activity(2L, "Paintball", "Fuld fart på farverne", 249.0));
+        repo.save(new Activity(3L, "Sumobrydning", "Kæmp i oppustelige dragter", 199.0));
     }
 }
