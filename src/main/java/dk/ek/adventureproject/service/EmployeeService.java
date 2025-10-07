@@ -23,6 +23,11 @@ public class EmployeeService {
         return Mapper.toDto(employeeRepo.save(employee));
     }
 
+    public Employee createEmployeeEntity(EmployeeCreateDTO dto) {
+        Employee employee = Mapper.toEntity(dto);
+        return employeeRepo.save(employee);
+    }
+
     public List<EmployeeDTO> getAllEmployees() {
         List<Employee> employees = employeeRepo.findAll();
         List<EmployeeDTO> result = new ArrayList<>();

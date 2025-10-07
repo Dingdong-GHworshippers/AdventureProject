@@ -2,9 +2,14 @@ package dk.ek.adventureproject.Model;
 
 import dk.ek.adventureproject.Model.enums.ProductType;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.*;
 
 @Entity
+@Getter
+@Setter
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,17 +18,18 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ProductType type;
 
+    private String name;
+
     private double price;
 
-    public Product(long id, ProductType type, double price) {
+    public Product(long id, ProductType type, String name, double price) {
         this.id = id;
         this.type = type;
+        this.name = name;
         this.price = price;
     }
 
     public Product(){}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+
 }

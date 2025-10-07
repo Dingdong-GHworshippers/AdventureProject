@@ -1,6 +1,7 @@
 package dk.ek.adventureproject.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,9 +22,10 @@ public class Booking {
     private LocalDate date;
 
     @OneToMany (mappedBy = "booking", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<ActivityTimeslot> activityTimeslots = new ArrayList<>();
 
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "booking_product_id" )
     private BookingOrder bookingOrder;
 
@@ -32,13 +34,16 @@ public class Booking {
     @JsonBackReference
     private Customer customer;
 
+    private int minAge;
+
     public Booking(){}
 
-    public Booking(Long id, LocalDate date, List<ActivityTimeslot> activityTimeslots, BookingOrder bookingOrder, Customer customer) {
+    public Booking(Long id, LocalDate date, List<ActivityTimeslot> activityTimeslots, BookingOrder bookingOrder, Customer customer, int minAge) {
         this.id = id;
         this.date = date;
         this.activityTimeslots = activityTimeslots;
         this.bookingOrder = bookingOrder;
         this.customer = customer;
+        this.minAge = minAge;
     }
 }

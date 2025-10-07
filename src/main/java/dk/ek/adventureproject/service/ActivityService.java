@@ -45,6 +45,7 @@ public class ActivityService {
         updatedActivity.setActivityName(activity.getActivityName());
         updatedActivity.setActivityDescription(activity.getActivityDescription());
         updatedActivity.setActivityPrice(activity.getActivityPrice());
+        updatedActivity.setMinAge(activity.getMinAge());
 
         return activityRepository.save(updatedActivity);
     }

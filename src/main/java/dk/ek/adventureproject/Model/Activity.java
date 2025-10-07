@@ -1,8 +1,6 @@
 package dk.ek.adventureproject.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,18 +12,20 @@ import lombok.Setter;
 @Table (name = "activities")
 public class Activity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String activityName;
     private String activityDescription;
     private double activityPrice;
+    private int minAge;
 
-    public Activity(Long id, String activityName, String activityDescription, double activityPrice) {
+    public Activity(Long id, String activityName, String activityDescription, double activityPrice, int minAge) {
         this.id = id;
         this.activityName = activityName;
         this.activityDescription = activityDescription;
         this.activityPrice = activityPrice;
-
+        this.minAge = minAge;
     }
 
     public Activity() {
