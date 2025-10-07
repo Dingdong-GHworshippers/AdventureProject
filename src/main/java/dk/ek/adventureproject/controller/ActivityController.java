@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.controller;
+package dk.ek.adventureproject.Controller;
 
 
 import dk.ek.adventureproject.Model.Activity;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Activities")
+@RequestMapping("/api/activities")
 @RequiredArgsConstructor
 
 public class ActivityController {
