@@ -1,5 +1,7 @@
 package dk.ek.adventureproject.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dk.ek.adventureproject.Model.enums.Role;
 import jakarta.persistence.*;
@@ -19,6 +21,8 @@ public class Employee {
     private Long id;
 
     private String userName;
+
+    @JsonIgnore
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -31,6 +35,7 @@ public class Employee {
 
     // Reverse relation to Timeslots, not sure if needed, could potentially be used to show an employees rosterplan.
     @ManyToMany(mappedBy = "employees")
+    @JsonBackReference
     private List<ActivityTimeslot> activityTimeslots = new ArrayList<>();
 
     public Employee(String userName, String password, Role role) {

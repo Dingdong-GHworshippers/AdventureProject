@@ -1,5 +1,7 @@
 package dk.ek.adventureproject.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,11 +29,13 @@ public class ActivityTimeslot {
     private Activity activity;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn (name = "booking_id")
     private Booking booking;
 
 
     @ManyToMany
+    @JsonManagedReference
     @JoinTable(
             name = "activity_timeslot_employees",
             joinColumns = @JoinColumn(name = "timeslot_id"),
