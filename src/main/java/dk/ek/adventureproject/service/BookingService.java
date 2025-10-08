@@ -61,6 +61,7 @@ public class BookingService {
         updatedBooking.setDate(booking.getDate());
         updatedBooking.setCustomer(booking.getCustomer());
         updatedBooking.setMinAge(booking.getMinAge());
+        updatedBooking.setPrice(booking.getPrice());
 
         return bookingRepository.save(updatedBooking);
     }

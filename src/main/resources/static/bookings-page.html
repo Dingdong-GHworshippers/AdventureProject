@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Bookings</title>
+
+</head>
+<body>
+
+<table id="bookings-table">
+    <thead>
+    <tr>
+        <th> Dato </th>
+        <th> Aktivitet </th>
+        <th> Minimumsalder </th>
+        <th> Pris </th>
+        <th> Kunde</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+
+</table>
+
+<form id="booking-form">
+    <p> Opret eller rediger booking her</p>
+    <input type="datetime-local" name="date" id="date" placeholder="Dato">
+    <input type="text" name="activity" id="activity" placeholder="Aktivitet">
+    <input type="text" name="customer" id="customer" placeholder="Kunde">
+    <input type="number" name="min-age" id="min-age" placeholder="Mindste alder">
+
+    <button type="submit"> Bekræft </button>
+</form>
+
+<script type="module" src="/js/bookingController.js"></script>
+</body>
+</html>

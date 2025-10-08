@@ -10,4 +10,9 @@ public class WebController {
     public String showCustomersPage(){
         return "customers-page.html";
     }
+
+    @GetMapping("/bookings")
+    public String showBookingsPage(){
+        return "bookings-page.html";
+    }
 }

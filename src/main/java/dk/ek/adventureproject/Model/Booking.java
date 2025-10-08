@@ -36,6 +36,8 @@ public class Booking {
 
     private int minAge;
 
+    private double price;
+
     public Booking(){}
 
     public Booking(Long id, LocalDate date, List<ActivityTimeslot> activityTimeslots, BookingOrder bookingOrder, Customer customer, int minAge) {

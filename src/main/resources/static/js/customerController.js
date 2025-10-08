@@ -41,7 +41,7 @@ tableBody.addEventListener("click", async (event) => {
             await deleteCustomer(customerId);
             customers = customers.filter(c => c.id != customerId);
             renderCustomers(customers, tableBody);
-            console.error("Kunde slettet");
+            console.log("Kunde slettet");
         } catch (err) {
             console.error("Fejl ved sletning");
         }
@@ -62,12 +62,12 @@ form.addEventListener("submit", async (event) => {
         if (editCustomerId) {
             await updateCustomer(editCustomerId, customerData);
             customers = customers.map(c => c.id == editCustomerId ? { ...c, ...customerData } : c);
-            console.error("Kunde opdateret");
+            console.log("Kunde opdateret");
             editCustomerId = null;
         } else {
             const newCustomer = await createCustomer(customerData);
             customers.push(newCustomer);
-            console.error("Kunde oprettet");
+            console.log("Kunde oprettet");
         }
         renderCustomers(customers, tableBody);
         resetCustomerForm(form);
