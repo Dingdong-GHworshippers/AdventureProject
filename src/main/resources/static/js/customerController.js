@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadAndRenderCustomers();
 });
 
-// Fetches customers
+// ==== FETCHES CUSTOMERS
 async function loadAndRenderCustomers() {
     try {
         customers = await getCustomers();
@@ -21,7 +21,7 @@ async function loadAndRenderCustomers() {
     }
 }
 
-// Event delegation for edit and delete buttons
+// == EVENT DELEGATION FOR EDIT AND DELETE. USES FILLCUSTOMERFORM FROM CUSTOMERVIEW TO EDIT IF THERE IS ID PRESENT
 tableBody.addEventListener("click", async (event) => {
     const row = event.target.closest("tr");
     if (!row) return;
@@ -48,7 +48,7 @@ tableBody.addEventListener("click", async (event) => {
     }
 });
 
-// Handle form submission
+// ===== SENDS JSON TO BACKEND WHEN CLICKING SUBMIT
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const customerData = {

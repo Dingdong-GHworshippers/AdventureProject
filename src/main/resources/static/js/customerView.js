@@ -1,3 +1,4 @@
+// ==== READS CUSTOMERS AND DISPLAYS THEM ====
 export function renderCustomers(customers, tableBodyEl) {
     tableBodyEl.innerHTML = "";
     customers.forEach(customer => {
@@ -16,6 +17,7 @@ export function renderCustomers(customers, tableBodyEl) {
     });
 }
 
+// ==== FILLS FORM FOR EDITING CUSTOMERS. USED ON EDIT CLICK
 export function fillCustomerForm(form, customer) {
     form.name.value = customer.name || "";
     form.email.value = customer.email || "";
