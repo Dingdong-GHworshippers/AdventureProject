@@ -18,5 +18,5 @@ export async function updateActivity(id, newActivity){
 export async function deleteActivity(id){
     console.log(id  + id);
 
-    return del(`${BASE_URL}${id}`);
+    return del(`${ACTIVITY_URL}${id}`);
 }
