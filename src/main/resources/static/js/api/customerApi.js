@@ -12,6 +12,7 @@ export async function createCustomer(customer){
 }
 
 export async function updateCustomer(id, newCustomer){
+
     return put(`${CUSTOMER_URL}/${id}`, newCustomer);
 }
 

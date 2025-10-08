@@ -1,5 +1,6 @@
 package dk.ek.adventureproject.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -26,14 +27,11 @@ public class Customer {
     @Email
     String email;
 
-    @Pattern(
-            regexp = "^\\+\\d{1,4}[-\\s]?\\d{4,15}$",
-            message = "Phone number must include a country code and 4–15 digits (e.g. +45 12345678)"
-    )
     String phoneNumber;
 
-    @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @JsonIgnore
     private Set<Booking> bookings = new HashSet<>();
 
     public Customer(){}
