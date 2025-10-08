@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roster and Employees</title>
+
+    <script type="module" src="js/employeeApp.js"></script>
+    <link rel="stylesheet" href="/css/header-footer.css">
+
+</head>
+<body>
+<app-header></app-header>
+
+<table id="employee-table">
+    <thead>
+    <tr>
+        <th data-key="id" data-label="ID">ID</th>
+        <th data-key="username" data-label="Username">Username</th>
+        <th data-key="role" data-label="Role">Role</th>
+        <!-- action buttons -->
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id="employee-table-body">
+    </tbody>
+</table>
+<app-footer></app-footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
