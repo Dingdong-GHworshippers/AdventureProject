@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+}
+
+/* Page title */
+.page-title {
+    text-align: center;
+    padding: 50px 0 30px;
+    color: #0f5132;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+/* Gallery grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px; /* more space between boxes */
+    padding: 0 60px 80px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Gallery boxes */
+.gallery-item {
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1; /* keeps them square */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Images fill neatly */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Hover zoom effect */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
