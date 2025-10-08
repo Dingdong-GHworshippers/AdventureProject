@@ -11,6 +11,28 @@ function initApp(){
     reloadAndRender();
 }
 
+const tableBody = document.querySelector("#activity-table-body");
+
+// Event delegation for Delete and Book buttons
+tableBody.addEventListener("click", (e) => {
+    const target = e.target;
+    const activityId = target.dataset.id;
+
+    if (target.classList.contains("delete-button")) {
+        // Call your delete function
+        deleteActivity(activityId).then(() => {
+            reloadAndRender();
+        });
+    }
+
+    if (target.classList.contains("book-button")) {
+        // Navigate to the booking page for this activity
+        window.location.href = `/booking.html?activityId=${activityId}`;
+    }
+});
+
+
+
 async function reloadAndRender() {
     try {
         const activities = await getActivity();
@@ -31,13 +53,17 @@ function renderTable(activity){
 function renderRow(activity){
     const tableBody = document.querySelector("#activity-table-body")
     const html = /*html*/ `
-        <tr data-id="${activity.id}">
+        <tr data-id="${activity.id}" class="activity-container">
+            
             <td>${activity.id}</td>
             <td>${activity.activityName}</td>
             <td>${activity.activityDescription}</td>
-            <td>${activity.activityPrice}</td>
+            <td>${activity.activityPrice} dkk</td>
             <td>
-                <button class="delete-button">Delete</button>
+                <button class="delete-button" data-id="${activity.id}">Delete</button>
+            </td>
+            <td>
+                <button type="submit" class="book-button" data-id="${activity.id}">Book tid</button>
             </td>
         </tr>
     `;
