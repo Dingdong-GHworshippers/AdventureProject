@@ -6,6 +6,13 @@ import {
 const API_URL = "http://localhost:8080/api/booking-orders";
 const tbody = document.querySelector("#orders-body");
 
+// Vi har kun 3 produkter – definér dem her
+const products = [
+    { id: 1, name: "Burger", price: 15 },
+    { id: 2, name: "Sodavand", price: 5 },
+    { id: 3, name: "T-Shirt", price: 25 }
+];
+
 // Hent og vis alle ordrer
 async function loadOrders() {
     tbody.innerHTML = "";
@@ -21,21 +28,32 @@ async function loadOrders() {
 function renderOrderRow(order) {
     const tr = document.createElement("tr");
 
-    // Hent aktivitetsdata, hvis de findes
-    const activityName = order.booking?.activity?.name || "<i>Ingen aktivitet</i>";
+    // Booking ID fra booking-klassen
     const bookingId = order.booking?.id ? `#${order.booking.id}` : "–";
 
-    const productList = order.products
-        .map(p => `${p.name} (kr. ${p.price})`)
-        .join("<br>");
+    // Produkter i ordren
+    const productList = order.products?.length
+        ? order.products.map(p => `${p.name} (kr. ${p.price})`).join("<br>")
+        : "<i>Ingen produkter</i>";
+
+    // Beregn total — ud fra de aktuelle produkter
+    const total = order.products?.reduce((sum, p) => sum + p.price, 0) || 0;
+
+    // Dropdown til at vælge produkt
+    const productOptions = `
+        <option value="">Vælg produkt...</option>
+        ${products.map(p => `<option value="${p.id}">${p.name} (kr. ${p.price})</option>`).join("")}
+    `;
 
     tr.innerHTML = `
         <td>${order.id}</td>
-        <td>${activityName} ${bookingId}</td>
-        <td>${order.total.toFixed(2)} kr.</td>
-        <td>${productList || "<i>Ingen produkter</i>"}</td>
+        <td>${bookingId}</td>
+        <td>${total.toFixed(2)} kr.</td>
+        <td>${productList}</td>
         <td>
-            <input type="number" min="1" placeholder="Produkt-ID" style="width:90px">
+            <select id="product-select-${order.id}" style="width:150px">
+                ${productOptions}
+            </select>
             <button data-action="add-product" data-id="${order.id}">➕</button>
         </td>
         <td>
@@ -43,11 +61,11 @@ function renderOrderRow(order) {
         </td>
     `;
 
-    // Tilføj evt. knapper til at fjerne produkter direkte:
+    // Tilføj knapper til at fjerne produkter
     if (order.products && order.products.length > 0) {
-        const removeButtons = order.products.map(p =>
-            `<button data-action="remove-product" data-order="${order.id}" data-product="${p.id}">❌ ${p.name}</button>`
-        ).join(" ");
+        const removeButtons = order.products
+            .map(p => `<button data-action="remove-product" data-order="${order.id}" data-product="${p.id}">❌ ${p.name}</button>`)
+            .join(" ");
         const removeTd = document.createElement("td");
         removeTd.innerHTML = removeButtons;
         tr.appendChild(removeTd);
@@ -56,7 +74,7 @@ function renderOrderRow(order) {
     tbody.appendChild(tr);
 }
 
-// Håndter klik i tabellen
+// Håndter klik (tilføj/fjern produkt, slet ordre)
 tbody.addEventListener("click", async (e) => {
     const btn = e.target.closest("button");
     if (!btn) return;
@@ -76,9 +94,9 @@ tbody.addEventListener("click", async (e) => {
     }
 
     if (action === "add-product") {
-        const input = btn.previousElementSibling;
-        const productId = input.value.trim();
-        if (!productId) return alert("Indtast et produkt-ID først.");
+        const select = document.querySelector(`#product-select-${orderId}`);
+        const productId = select.value;
+        if (!productId) return alert("Vælg et produkt først.");
 
         try {
             await fetch(`${API_URL}/${orderId}/products/${productId}`, { method: "POST" });
@@ -99,5 +117,5 @@ tbody.addEventListener("click", async (e) => {
     }
 });
 
-// Hent ordrer ved load
+// Indlæs ordrer ved load
 loadOrders();

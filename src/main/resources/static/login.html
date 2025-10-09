@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Admin Login</h2>
+
+    <form id="login-form">
+        <label for="username">Brugernavn</label>
+        <input type="text" id="username" required>
+
+        <label for="password">Adgangskode</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Log ind</button>
+        <p id="error"></p>
+    </form>
+</div>
+
+<script type="module" src="/js/login.js"></script>
+</body>
+</html>

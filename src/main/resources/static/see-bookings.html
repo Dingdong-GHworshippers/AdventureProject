@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Se Bookinger</title>
+    <link rel="stylesheet" href="/css/see-bookings.css">
     <script type="module" src="js/see-bookings.js"></script>
 </head>
 <body>
 <h1>Booking Orders</h1>
 
-<table border="1">
+<div class="back-container">
+    <button id="back-button">← Tilbage</button>
+</div>
+
+<table>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Aktivitet</th>
+        <th>Booking ID</th>
         <th>Total</th>
         <th>Produkter</th>
         <th>Tilføj produkt</th>
         <th>Handling</th>
+        <th>Fjern produkt</th>
     </tr>
     </thead>
     <tbody id="orders-body"></tbody>
 </table>
+<script>
+    document.getElementById("back-button").addEventListener("click", () => {
+        window.location.href = "/admin-page.html";
+    });
+</script>
 
 </body>
 </html>
