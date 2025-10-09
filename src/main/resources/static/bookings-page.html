@@ -11,11 +11,13 @@
 <table id="bookings-table">
     <thead>
     <tr>
+        <th> Kunde</th>
         <th> Dato </th>
+        <th> Starttid </th>
+        <th> Sluttid </th>
         <th> Aktivitet </th>
         <th> Minimumsalder </th>
         <th> Pris </th>
-        <th> Kunde</th>
     </tr>
     </thead>
 
@@ -27,10 +29,17 @@
 
 <form id="booking-form">
     <p> Opret eller rediger booking her</p>
-    <input type="datetime-local" name="date" id="date" placeholder="Dato">
-    <input type="text" name="activity" id="activity" placeholder="Aktivitet">
+    <!-- Probably needs to be a drop down/search of customers -->
     <input type="text" name="customer" id="customer" placeholder="Kunde">
+    <input type="date" name="date" id="date" placeholder="Dato">
+    <input type="time" name="start-time" id="start-time" placeholder="Starttid">
+    <input type="time" name="end-time" id="end-time" placeholder="Sluttid">
+
+    <!--=== Probably needs to be a selection of available activities -->
+    <input type="text" name="activity" id="activity" placeholder="Aktiviteter">
+
     <input type="number" name="min-age" id="min-age" placeholder="Mindste alder">
+    <input type="number" name="price" id="price" placeholder="Pris">
 
     <button type="submit"> Bekræft </button>
 </form>

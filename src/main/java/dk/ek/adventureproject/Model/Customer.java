@@ -30,7 +30,6 @@ public class Customer {
     String phoneNumber;
 
     @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL)
-    @JsonManagedReference
     @JsonIgnore
     private Set<Booking> bookings = new HashSet<>();
 

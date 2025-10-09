@@ -31,7 +31,6 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    @JsonBackReference
     private Customer customer;
 
     private int minAge;

@@ -1,6 +1,7 @@
 package dk.ek.adventureproject.controller;
 
 import dk.ek.adventureproject.Model.Booking;
+import dk.ek.adventureproject.Model.BookingOrder;
 import dk.ek.adventureproject.Service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
