@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Book Activities</title>
+</head>
+<body>
+<h1>Book an Activity</h1>
+
+<label for="booking-date">Select Date:</label>
+<input type="date" id="booking-date" /><br /><br />
+
+<div id="timeslot-list"></div>
+
+<h3>Customer Info</h3>
+<form id="booking-form">
+    <input type="text" id="customer-name" placeholder="Fulde navn" required />
+    <input type="email" id="customer-email" placeholder="Email" required />
+    <input type="tel" id="customer-phone" placeholder="Telefonnummer" required />
+    <input type="number" id="min-age" placeholder="Yngste alder i selskabet" required />
+    <button type="submit">Book</button>
+</form>
+
+<script type="module" src="./js/makeBookingController.js"></script>
+</body>
+</html>

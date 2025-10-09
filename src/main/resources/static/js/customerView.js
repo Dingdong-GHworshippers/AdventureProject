@@ -9,8 +9,8 @@ export function renderCustomers(customers, tableBodyEl) {
             <td>${customer.email}</td>
             <td>${customer.phoneNumber}</td>
             <td>
-                <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Delete</button>
+                <button class="edit-btn">Rediger</button>
+                <button class="delete-btn">Slet</button>
             </td>
         `;
         tableBodyEl.appendChild(row);

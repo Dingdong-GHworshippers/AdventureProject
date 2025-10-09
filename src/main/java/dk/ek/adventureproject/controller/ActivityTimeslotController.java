@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,9 +25,10 @@ public class ActivityTimeslotController {
     }
 
     @GetMapping("/by-date")
-    public ResponseEntity<List<ActivityTimeslot>> getTimeslotsByDate(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date){
+    public ResponseEntity<List<ActivityTimeslot>> getTimeslotsByDate(
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
+    ) {
         return ResponseEntity.ok(activityTimeslotService.getActivityTimeSlotsByDate(date));
-
     }
 
     @PutMapping("/{id}")
