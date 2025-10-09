@@ -50,6 +50,10 @@ public class Mapper {
         return customer;
     }
 
+    /*
+    Takes each timeslot activity DTO from the list of activity timeslot DTOs and maps them to the correct timeslot
+    from the database, so that the setBooked change is persisted throughout them all.
+    */
     public List<ActivityTimeslot> timeslotSelectionDtoToActivityTimeslot(List<TimeslotSelectionDTO> timeslotSelectionDTOList){
         List<ActivityTimeslot> timeslots = new ArrayList<>();
 

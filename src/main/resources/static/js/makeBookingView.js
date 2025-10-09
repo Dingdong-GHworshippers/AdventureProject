@@ -1,3 +1,4 @@
+// Creates the timeslot fields with checkboxes and info about timeslots as well as the activity drop down menu
 export function renderTimeslots(timeslots, containerEl, activities) {
     containerEl.innerHTML = "";
 
@@ -20,7 +21,7 @@ export function renderTimeslots(timeslots, containerEl, activities) {
         div.appendChild(info);
         div.appendChild(activitySelect);
 
-        // Store metadata for later use
+        // Store metadata to use in the JSON RequestDTO for the backend
         div.dataset.id = slot.id;
         div.dataset.startTime = slot.startTime;
         div.dataset.endTime = slot.endTime;
@@ -29,6 +30,7 @@ export function renderTimeslots(timeslots, containerEl, activities) {
     });
 }
 
+// Looks at all the blocks that have been checked off and makes an activityTimeSlotDTO for the requestDTO
 export function collectFormData(dateStr) {
     const selectedBlocks = Array.from(document.querySelectorAll(".timeslot"))
         .filter(ts => ts.querySelector(".slot-select").checked)
@@ -39,6 +41,7 @@ export function collectFormData(dateStr) {
             activityId: Number(ts.querySelector("select").value)
         }));
 
+    // Returns the entire DTO object being sent via the JSON
     return {
         name: document.getElementById("customer-name").value,
         email: document.getElementById("customer-email").value,
@@ -48,6 +51,7 @@ export function collectFormData(dateStr) {
     };
 }
 
+// Formats the time so that it only shows hours and minutes
 function formatTime(dateTimeStr) {
     const date = new Date(dateTimeStr);
     const h = String(date.getHours()).padStart(2, "0");

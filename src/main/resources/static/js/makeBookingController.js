@@ -5,13 +5,17 @@ const timeslotList = document.getElementById("timeslot-list");
 const dateInput = document.getElementById("booking-date");
 const form = document.getElementById("booking-form");
 
+// Sets the date input for todays date default
 dateInput.value = new Date().toISOString().split("T")[0];
 
+
+// Fetches the activities to display in the drop down menu
 async function fetchActivities() {
     const res = await fetch("/api/activities");
     return res.json();
 }
 
+// Loads the timeslots depending on the entered date
 async function loadUIForDate(dateStr) {
     const [timeslots, activities] = await Promise.all([
         getTimeslotsByDate(dateStr),
@@ -23,11 +27,12 @@ async function loadUIForDate(dateStr) {
     renderTimeslots(availableTimeslots, timeslotList, activities);
 }
 
+// Listens for a date change in the date field
 dateInput.addEventListener("change", () => {
     loadUIForDate(dateInput.value);
 });
 
-// Submit booking
+// Submits booking and checks that everything has been entered correctly
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const bookingData = collectFormData(dateInput.value);

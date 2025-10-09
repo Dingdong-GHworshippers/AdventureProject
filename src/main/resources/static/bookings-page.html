@@ -30,14 +30,10 @@
 <form id="booking-form">
     <p> Opret eller rediger booking her</p>
     <!-- Probably needs to be a drop down/search of customers -->
-    <input type="text" name="customer" id="customer" placeholder="Kunde">
+    <select name="customerId" id="customerId" required>
+        <option value="">Vælg kunde</option>
+    </select>
     <input type="date" name="date" id="date" placeholder="Dato">
-    <input type="time" name="start-time" id="start-time" placeholder="Starttid">
-    <input type="time" name="end-time" id="end-time" placeholder="Sluttid">
-
-    <!--=== Probably needs to be a selection of available activities -->
-    <input type="text" name="activity" id="activity" placeholder="Aktiviteter">
-
     <input type="number" name="min-age" id="min-age" placeholder="Mindste alder">
     <input type="number" name="price" id="price" placeholder="Pris">
 

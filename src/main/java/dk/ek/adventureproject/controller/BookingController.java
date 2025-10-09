@@ -39,7 +39,12 @@ public class BookingController {
         return ResponseEntity.ok(booking);
     }
 
-    // Creates booking
+    /* Method for creating a booking
+    It receives a bookingRequestDTO that contains the customer info, booking info and activity timeslot info.
+    As the Booking class cascades down to the ActivityTimeslots, we do not need to save them as well,
+    but we do need to add the customer and activity timeslots to the booking, and we need to set the booking on each
+    activity timeslot converted from the bookingRequestDTO.
+    */
     @PostMapping
     public ResponseEntity<Booking> createBooking(@RequestBody BookingRequestDTO bookingRequestDTO){
         Customer customer = mapper.requestDtoToCustomer(bookingRequestDTO);
