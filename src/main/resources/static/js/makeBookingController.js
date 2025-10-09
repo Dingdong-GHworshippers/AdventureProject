@@ -53,6 +53,7 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
+    // Could have used POST method from bookingApi, but the fetch method does not return res.ok, so it never reloads and gives success message
     try {
         const res = await fetch("/api/bookings", {
             method: "POST",
