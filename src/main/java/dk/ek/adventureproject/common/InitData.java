@@ -84,7 +84,7 @@ public class InitData implements CommandLineRunner {
                 List.of(paintballMorning),
                 order1,
                 customer1,
-                14
+                15
         );
         paintballMorning.setBooking(booking1);
         booking1 = bookingService.createBooking(booking1); // Will include the activity price
@@ -172,7 +172,7 @@ public class InitData implements CommandLineRunner {
 //        bookingOrderService.save(order1);
 //        bookingOrderService.save(order2);
 //
-//        Booking booking1 = new Booking(null, LocalDate.now().plusDays(1), null, order1, customer1, 14);
+//        Booking booking1 = new Booking(null, LocalDate.now().plusDays(1), null, order1, customer1, 15);
 //        Booking booking2 = new Booking(null, LocalDate.now().plusDays(2), null, order2, customer2, 16);
 //        booking1 = bookingService.createBooking(booking1);
 //        booking2 = bookingService.createBooking(booking2);
