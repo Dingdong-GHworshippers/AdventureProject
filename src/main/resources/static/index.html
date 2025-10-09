@@ -7,19 +7,18 @@
 
     <link rel="stylesheet" href="/css/indexstyle.css">
     <link rel="stylesheet" href="/css/header-footer.css">
-
 </head>
 <body>
 <app-header></app-header>
 
-
+<!-- Simpel Admin Login-knap -->
+<button id="admin-login-btn">Admin Login</button>
 
 <section class="hero">
     <h1>Velkommen til Adventure Alley</h1>
     <p>Oplevelser for hele familien – gokart, paintball, minigolf, sumobrydning og meget mere!</p>
     <a href="see-activities.html" class="btn">Book din oplevelse nu</a>
 </section>
-
 
 <section class="content">
     <h2>Hos Adventure Alley</h2>
@@ -41,7 +40,15 @@
         <em>Book nemt online – vælg aktivitet, tidspunkt og antal deltagere, så klarer vi resten.</em>
     </p>
 </section>
+
 <app-footer></app-footer>
+
 <script src="/js/main.js"></script>
+<script>
+    // Redirect til login når man klikker på Admin Login-knappen
+    document.querySelector("#admin-login-btn").addEventListener("click", () => {
+        window.location.href = "/login.html";
+    });
+</script>
 </body>
 </html>

@@ -53,4 +53,10 @@ public class EmployeeService {
         }
     }
 
+    public EmployeeDTO login(String username, String password) {
+        return employeeRepo.findByUserNameAndPassword(username, password)
+                .map(Mapper::toDto)
+                .orElseThrow(() -> new RuntimeException("Forkert brugernavn eller adgangskode"));
+    }
+
 }
