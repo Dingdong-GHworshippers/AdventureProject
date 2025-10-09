@@ -36,3 +36,25 @@ body {
     background-color: #5cae63;
     transform: scale(1.05);
 }
+
+.logout-container {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.logout-btn {
+    background-color: #0f5132;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #5cae63;
+    transform: scale(1.05);
+}

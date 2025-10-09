@@ -58,3 +58,24 @@ body {
     margin-bottom: 15px;
 }
 
+.admin-login-container {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.admin-login-btn {
+    background-color: #0f5132;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.admin-login-btn:hover {
+    background-color: #5cae63;
+    transform: scale(1.05);
+}

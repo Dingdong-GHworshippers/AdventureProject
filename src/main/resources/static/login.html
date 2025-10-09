@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="/css/adminstyle.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-<h2>Admin Login</h2>
 
-<form id="login-form">
-    <label for="username">Brugernavn:</label>
-    <input type="text" id="username" required>
+<div class="login-container">
+    <h2>Admin Login</h2>
 
-    <label for="password">Adgangskode:</label>
-    <input type="password" id="password" required>
+    <form id="login-form">
+        <label for="username">Brugernavn</label>
+        <input type="text" id="username" required>
 
-    <button type="submit">Log ind</button>
-</form>
+        <label for="password">Adgangskode</label>
+        <input type="password" id="password" required>
 
-<p id="error" style="color:red;"></p>
+        <button type="submit">Log ind</button>
+        <p id="error"></p>
+    </form>
+</div>
 
 <script type="module" src="/js/login.js"></script>
 </body>
