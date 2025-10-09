@@ -43,6 +43,8 @@ public class ActivityTimeslot {
     )
     private List<Employee> employees = new ArrayList<>();
 
+    private boolean isBooked;
+
 
     public ActivityTimeslot(Long id, LocalDateTime startTime, LocalDateTime endTime) {
         this.id = id;

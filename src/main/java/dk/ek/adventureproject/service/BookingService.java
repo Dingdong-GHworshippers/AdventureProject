@@ -1,9 +1,6 @@
 package dk.ek.adventureproject.Service;
 
-import dk.ek.adventureproject.Model.ActivityTimeslot;
-import dk.ek.adventureproject.Model.Booking;
-import dk.ek.adventureproject.Model.Customer;
-import dk.ek.adventureproject.Model.Product;
+import dk.ek.adventureproject.Model.*;
 import dk.ek.adventureproject.repo.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -75,8 +72,20 @@ public class BookingService {
 
     // Creates booking and sets id to null as it is auto-incremented
     public Booking createBooking(Booking booking){
+        BookingOrder bookingOrder = new BookingOrder();
+        bookingOrder.setId(null);
+        bookingOrder.setBooking(booking);
+
         booking.setId(null);
+        booking.setBookingOrder(bookingOrder);
+
+        for (ActivityTimeslot ts : booking.getActivityTimeslots()) {
+            ts.setBooked(true);
+            ts.setBooking(booking);
+        }
+
         booking.setPrice(calculateBookingPrice(booking));
+
         if (!isOfAge(booking)){
             throw new RuntimeException("Den yngste deltager er ikke gammel nok til denne aktivitet");
         }

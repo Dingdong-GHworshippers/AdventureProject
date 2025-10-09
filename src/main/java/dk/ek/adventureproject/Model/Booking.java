@@ -25,8 +25,9 @@ public class Booking {
     @JsonManagedReference
     private List<ActivityTimeslot> activityTimeslots = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "booking_product_id" )
+    @JsonManagedReference
     private BookingOrder bookingOrder;
 
     @ManyToOne

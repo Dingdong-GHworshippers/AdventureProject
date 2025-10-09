@@ -31,6 +31,9 @@ public class InitData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        // --- GENERATE TIMESLOTS ---
+        activityTimeslotService.generateTimeslotsForNextMonth();
+
         // --- PRODUCTS ---
         Product burger = new Product(0, ProductType.FOOD, "Burger" , 15.0);
         Product soda = new Product(0, ProductType.DRINK, "Sodavand", 5.0);
@@ -72,15 +75,16 @@ public class InitData implements CommandLineRunner {
 
         ActivityTimeslot paintballMorning = new ActivityTimeslot(
                 null,
-                LocalDateTime.now().plusDays(1).withHour(9).withMinute(0),
-                LocalDateTime.now().plusDays(1).withHour(11).withMinute(0)
+                LocalDateTime.now().minusDays(1).withHour(10).withMinute(0),
+                LocalDateTime.now().minusDays(1).withHour(12).withMinute(0)
         );
         paintballMorning.setActivity(paintball);
         paintballMorning.getEmployees().add(bob);
+        paintballMorning.setBooked(true);
 
         Booking booking1 = new Booking(
                 null,
-                LocalDate.now().plusDays(1),
+                LocalDate.now().minusDays(1),
                 List.of(paintballMorning),
                 order1,
                 customer1,
@@ -97,15 +101,16 @@ public class InitData implements CommandLineRunner {
 
         ActivityTimeslot curlingAfternoon = new ActivityTimeslot(
                 null,
-                LocalDateTime.now().plusDays(2).withHour(13).withMinute(0),
-                LocalDateTime.now().plusDays(2).withHour(15).withMinute(0)
+                LocalDateTime.now().minusDays(2).withHour(12).withMinute(0),
+                LocalDateTime.now().minusDays(2).withHour(14).withMinute(0)
         );
         curlingAfternoon.setActivity(curling);
         curlingAfternoon.getEmployees().add(carol);
+        curlingAfternoon.setBooked(true);
 
         Booking booking2 = new Booking(
                 null,
-                LocalDate.now().plusDays(2),
+                LocalDate.now().minusDays(2),
                 List.of(curlingAfternoon),
                 order2,
                 customer2,

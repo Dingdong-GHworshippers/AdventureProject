@@ -15,4 +15,9 @@ public class WebController {
     public String showBookingsPage(){
         return "bookings-page.html";
     }
+
+    @GetMapping("/make-booking")
+    public String makeBookingPage(){
+        return "make-booking-page.html";
+    }
 }

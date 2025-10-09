@@ -16,15 +16,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EmployeeService {
     private final EmployeeRepo employeeRepo;
+    private final Mapper mapper;
 
     //using employeeCREATEdto instead, uses password
     public EmployeeDTO createEmployee(EmployeeCreateDTO dto) {
-        Employee employee = Mapper.toEntity(dto);
-        return Mapper.toDto(employeeRepo.save(employee));
+        Employee employee = mapper.toEntity(dto);
+        return mapper.toDto(employeeRepo.save(employee));
     }
 
     public Employee createEmployeeEntity(EmployeeCreateDTO dto) {
-        Employee employee = Mapper.toEntity(dto);
+        Employee employee = mapper.toEntity(dto);
         return employeeRepo.save(employee);
     }
 
@@ -32,7 +33,7 @@ public class EmployeeService {
         List<Employee> employees = employeeRepo.findAll();
         List<EmployeeDTO> result = new ArrayList<>();
         for (Employee e : employees) {
-            result.add(Mapper.toDto(e));
+            result.add(mapper.toDto(e));
         }
         return result;
     }
@@ -40,7 +41,7 @@ public class EmployeeService {
     public EmployeeDTO getEmployeeById(Long id) {
         Optional<Employee> employee = employeeRepo.findById(id);
         if (employee.isPresent()) {
-            return Mapper.toDto(employee.get());
+            return mapper.toDto(employee.get());
         }
         throw new RuntimeException("Employee not found");
     }
