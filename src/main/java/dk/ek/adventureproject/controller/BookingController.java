@@ -1,8 +1,11 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.Booking;
-import dk.ek.adventureproject.Model.BookingOrder;
+import dk.ek.adventureproject.Model.*;
+import dk.ek.adventureproject.Service.ActivityTimeslotService;
 import dk.ek.adventureproject.Service.BookingService;
+import dk.ek.adventureproject.Service.CustomerService;
+import dk.ek.adventureproject.dto.BookingRequestDTO;
+import dk.ek.adventureproject.dto.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingController {
     private final BookingService bookingService;
+    private final Mapper mapper;
+    private final CustomerService customerService;
+    private final ActivityTimeslotService activityTimeslotService;
 
     // Returns all bookings
     @GetMapping
@@ -35,7 +41,24 @@ public class BookingController {
 
     // Creates booking
     @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking){
+    public ResponseEntity<Booking> createBooking(@RequestBody BookingRequestDTO bookingRequestDTO){
+        Customer customer = mapper.requestDtoToCustomer(bookingRequestDTO);
+        customerService.createCustomer(customer);
+
+        List<ActivityTimeslot> timeslots = mapper.timeslotSelectionDtoToActivityTimeslot(bookingRequestDTO.selectedTimeslots());
+
+        Booking booking = new Booking();
+        booking.setDate(timeslots.getFirst().getStartTime().toLocalDate());
+        booking.setCustomer(customer);
+
+        for (ActivityTimeslot ts : timeslots) {
+            ts.setBooking(booking);
+            ts.setBooked(true);
+        }
+
+        booking.setActivityTimeslots(timeslots);
+        booking.setMinAge(bookingRequestDTO.minAge());
+
         return ResponseEntity.status(HttpStatus.CREATED).body(bookingService.createBooking(booking));
     }
 
