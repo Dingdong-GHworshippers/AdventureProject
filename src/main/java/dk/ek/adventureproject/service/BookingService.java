@@ -28,7 +28,7 @@ public class BookingService {
             }
         }
 
-        return booking.getMinAge() > activityMinAge;
+        return booking.getMinAge() >= activityMinAge;
     }
 
     public double calculateBookingPrice(Booking booking){
