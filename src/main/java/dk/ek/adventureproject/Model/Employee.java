@@ -29,13 +29,13 @@ public class Employee {
     private Role role;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "employee-rosters")
     private List<Roster> rosters = new ArrayList<>();
 
 
     // Reverse relation to Timeslots, not sure if needed, could potentially be used to show an employees rosterplan.
     @ManyToMany(mappedBy = "employees")
-    @JsonBackReference
+    @JsonBackReference(value = "employee-timeslots")
     private List<ActivityTimeslot> activityTimeslots = new ArrayList<>();
 
     public Employee(String userName, String password, Role role) {

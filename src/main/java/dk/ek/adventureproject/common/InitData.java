@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 
@@ -57,9 +58,17 @@ public class InitData implements CommandLineRunner {
         activityService.createActivity(curling);
 
         // --- EMPLOYEES ---
-        Employee alice = employeeService.createEmployeeEntity(new EmployeeCreateDTO("alice", "password1", Role.MANAGER));
-        Employee bob = employeeService.createEmployeeEntity(new EmployeeCreateDTO("bob", "password2", Role.EMPLOYEE));
-        Employee carol = employeeService.createEmployeeEntity(new EmployeeCreateDTO("carol", "password3", Role.EMPLOYEE));
+        Employee alice = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Alice", "password1", Role.MANAGER));
+        Employee bob = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Bob", "password2", Role.EMPLOYEE));
+        Employee carol = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Carol", "password3", Role.EMPLOYEE));
+        Employee david = employeeService.createEmployeeEntity(new EmployeeCreateDTO("David", "password4", Role.EMPLOYEE));
+        Employee emma = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Emma", "password5", Role.EMPLOYEE));
+        Employee frederik = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Frederik", "password6", Role.EMPLOYEE));
+        Employee gustav = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Gustav", "password7", Role.EMPLOYEE));
+        Employee hannah = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Hannah", "password8", Role.EMPLOYEE));
+        Employee isabella = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Isabella", "password9", Role.MANAGER));
+        Employee jonas = employeeService.createEmployeeEntity(new EmployeeCreateDTO("Jonas", "password10", Role.EMPLOYEE));
+
 
         // --- CUSTOMERS ---
         Customer customer1 = customerService.createCustomer(
@@ -122,12 +131,20 @@ public class InitData implements CommandLineRunner {
         activityTimeslotService.createActivityTimeslot(curlingAfternoon); // Optional if cascade
 
         // --- ROSTERS ---
-        Roster roster1 = new Roster(LocalDate.now().plusDays(1), alice);
-        Roster roster2 = new Roster(LocalDate.now().plusDays(2), bob);
-        Roster roster3 = new Roster(LocalDate.now().plusDays(3), carol);
-        rosterService.createRoster(roster1);
-        rosterService.createRoster(roster2);
-        rosterService.createRoster(roster3);
+        LocalTime[] starts = {
+                LocalTime.of(10, 0),
+                LocalTime.of(12, 0),
+                LocalTime.of(14, 0),
+                LocalTime.of(16, 0)
+        };
+
+        for (int i = 0; i < 5; i++) { // next 5 days
+            LocalDate date = LocalDate.now().plusDays(i);
+
+            // assign two employees per day to cover all 4 timeslots (2 each)
+            rosterService.createRoster(new Roster(date, starts[0], starts[1], alice));
+            rosterService.createRoster(new Roster(date, starts[2], starts[3], bob));
+        }
     }
 
 //    @Override

@@ -21,8 +21,6 @@ public class ActivityTimeslot {
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-  
-
 
     @ManyToOne
     @JoinColumn (name = "activity_id")
@@ -35,7 +33,7 @@ public class ActivityTimeslot {
 
 
     @ManyToMany
-    @JsonManagedReference
+    @JsonManagedReference(value = "employee-timeslots")
     @JoinTable(
             name = "activity_timeslot_employees",
             joinColumns = @JoinColumn(name = "timeslot_id"),

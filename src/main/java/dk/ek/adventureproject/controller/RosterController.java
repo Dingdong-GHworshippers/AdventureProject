@@ -1,4 +1,5 @@
-package dk.ek.adventureproject.controller;
+package dk.ek.adventureproject.Controller;
+
 
 import dk.ek.adventureproject.Model.Roster;
 import dk.ek.adventureproject.Service.RosterService;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -38,6 +40,12 @@ public class RosterController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    // READ - by date
+    @GetMapping("/date/{date}")
+    public ResponseEntity<List<Roster>> getRosterForDate(@PathVariable LocalDate date) {
+        return ResponseEntity.ok(rosterService.getRosterByDate(date));
+    }
+
     // UPDATE
     @PutMapping("/{id}")
     public ResponseEntity<Roster> updateRoster(@PathVariable Long id, @RequestBody Roster rosterDetails) {
@@ -60,28 +68,15 @@ public class RosterController {
         }
     }
 
-    // ASSIGN an employee to a roster
-    @PostMapping("/{rosterId}/employee/{employeeId}")
-    public ResponseEntity<Roster> addEmployeeToRoster(@PathVariable Long rosterId, @PathVariable Long employeeId) {
-        try {
-            Roster updated = rosterService.addEmployeeToRoster(rosterId, employeeId);
-            return ResponseEntity.ok(updated);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    // CREATE roster for employee on a given date
+    // CREATE roster for specific employee and date
     @PostMapping("/employee/{employeeId}")
     public ResponseEntity<Roster> createRosterForEmployee(
             @PathVariable Long employeeId,
-            @RequestParam String date) {
-        try {
-            LocalDate localDate = LocalDate.parse(date);
-            Roster created = rosterService.createRosterForEmployee(employeeId, localDate);
-            return ResponseEntity.status(HttpStatus.CREATED).body(created);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+            @RequestBody Roster roster) {
+        LocalDate date = roster.getDate();
+        LocalTime start = roster.getShiftStart();
+        LocalTime end = roster.getShiftEnd();
+        Roster created = rosterService.createRosterForEmployee(employeeId, date, start, end);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 }
