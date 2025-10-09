@@ -12,11 +12,11 @@ export async function createActivity(activity){
 }
 
 export async function updateActivity(id, newActivity){
-    return put(`${BASE_URL}${id}`, newActivity);
+    return put(`${BASE_URL}/${id}`, newActivity);
 }
 
 export async function deleteActivity(id){
     console.log(id  + id);
 
-    return del(`${ACTIVITY_URL}${id}`);
+    return del(`${ACTIVITY_URL}/${id}`);
 }
