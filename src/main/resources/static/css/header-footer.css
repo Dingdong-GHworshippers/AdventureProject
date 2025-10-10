@@ -184,3 +184,6 @@ nav a:hover::after {
         gap: 1rem;
     }
 }
+footer {
+    width: 100%;
+}

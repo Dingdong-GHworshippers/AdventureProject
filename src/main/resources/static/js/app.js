@@ -27,7 +27,7 @@ tableBody.addEventListener("click", (e) => {
 
     if (target.classList.contains("book-button")) {
         // Navigate to the booking page for this activity
-        window.location.href = `/booking.html?activityId=${activityId}`;
+        window.location.href = `/bookings-page.html?activityId=${activityId}`;
     }
 });
 
@@ -64,6 +64,7 @@ function renderRow(activity){
             </td>
             <td>
                 <button type="submit" class="book-button" data-id="${activity.id}">Book tid</button>
+                
             </td>
         </tr>
     `;
