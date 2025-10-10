@@ -10,7 +10,7 @@ export async function createTimeslot(activity) {
     return post(TIMESLOT_URL, activity);
 }
 
-export async function updateTimeslot(id, newActivity) {
+export async function updateTimeslot(id, newActivity){
     return put(`${TIMESLOT_URL}/${id}`, newActivity);
 }
 

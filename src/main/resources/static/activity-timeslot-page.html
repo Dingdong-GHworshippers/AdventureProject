@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Aktivitetstidspunkter</title>
+
+</head>
+<body>
+
+<table id="activity-timeslot-table">
+  <thead>
+  <tr>
+    <th> Timeslot ID </th>
+    <th> Starttid </th>
+    <th> Sluttid </th>
+    <th> Aktivitet </th>
+    <th> Medarbejder </th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  </tbody>
+
+</table>
+
+<form id="activity-timeslot-form">
+  <p> Opret eller rediger aktivitetstidspunkt her</p>
+  <input type="number" name = "timeslotId" id="timeslotId" placeholder="Timeslot ID" readonly>
+  <input type="time" name="startTime" id="startTime" placeholder="Starttid">
+  <input type="time" name="endtime" id="endTime" placeholder="Sluttid">
+  <select name="activityId" id="activity">
+    <option value="">Vælg aktivitet</option>
+  </select>
+  <input type="text" name="employee" id="employee" placeholder="Medarbejder">
+
+  <button type="submit"> Bekræft </button>
+</form>
+
+<script type="module" src="/js/activityTimeslotController.js"></script>
+</body>
+</html>
