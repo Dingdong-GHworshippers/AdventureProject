@@ -33,8 +33,16 @@ public class BookingOrderService {
     }
 
     public void deleteById(Long id) {
+        BookingOrder order = bookingOrderRepository.findById(id).orElse(null);
+
+        List<Product> products = order.getProducts();
+        for (Product product : products) {
+            products.remove(product);
+        }
+
         bookingOrderRepository.deleteById(id);
     }
+
 
     public boolean existsById(Long id) {
         return bookingOrderRepository.existsById(id);

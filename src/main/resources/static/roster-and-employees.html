@@ -6,26 +6,64 @@
 
     <script type="module" src="js/employeeApp.js"></script>
     <link rel="stylesheet" href="/css/header-footer.css">
-
+    <link rel="stylesheet" href="/css/see-roster-employee.css">
 </head>
 <body>
 <app-header></app-header>
 
-<table id="employee-table">
-    <thead>
-    <tr>
-        <th data-key="id" data-label="ID">ID</th>
-        <th data-key="username" data-label="Username">Username</th>
-        <th data-key="role" data-label="Role">Role</th>
-        <!-- action buttons -->
-        <th></th>
-    </tr>
-    </thead>
-    <tbody id="employee-table-body">
-    </tbody>
-</table>
+<main>
+    <div class="content-layout">
+        <!-- Left side: roster -->
+        <section id="roster-section">
+            <h2>Activity Timeslots</h2>
+            <table id="roster-table">
+                <thead>
+                <tr>
+                    <th>Activity</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Assigned Employees</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="roster-table-body"></tbody>
+            </table>
+        </section>
+
+        <!-- Right side: employee table -->
+        <section id="employee-section">
+            <h2 class="center">Add Employee</h2>
+            <form id="employee-form" class="mb-4 flex" autocomplete="off">
+                <input type="hidden" id="id" name="id" value="" />
+                <input type="text" id="username" name="username" placeholder="Username" required />
+                <input type="text" id="password" name="password" placeholder="Password" required />
+                <label for="role"> Role </label>
+                <select name =role id="role">
+                    <option value="Manager">Manager</option>
+                    <option value="Employee">Employee</option>
+                </select>
+                <button type="submit">Add Employee</button>
+            </form>
+            <h2>Employees</h2>
+            <table id="employee-table">
+                <thead>
+                <tr>
+                    <th data-key="id">ID</th>
+                    <th data-key="userName">Username</th>
+                    <th data-key="role">Role</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="employee-table-body"></tbody>
+            </table>
+        </section>
+    </div>
+</main>
+
 <app-footer></app-footer>
 
+<script type="module" src="js/employeeApp.js"></script>
 <script src="/js/main.js"></script>
+
 </body>
 </html>

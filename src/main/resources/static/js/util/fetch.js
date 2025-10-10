@@ -16,18 +16,12 @@ function createFetchOptions(httpMethod, body, headers = {}) {
 }
 
 async function handleResponse(res) {
-    if (res.status === 204) {
-        return null;
-    }
-
     if (!res.ok) {
-        throw new Error("HTTP error! status: " + res.status);
-        // error.statusText = res.statusText;
-        // throw error;
+        const data = await res.json().catch(() => ({}));
+        const errorMsg = data.error || `HTTP error ${res.status}`;
+        throw new Error(errorMsg);
     }
-
-    // Should we check if it is JSON????
-    return res.json();
+    return res.status === 204 ? null : res.json();
 }
 
 export async function get(url, headers) {

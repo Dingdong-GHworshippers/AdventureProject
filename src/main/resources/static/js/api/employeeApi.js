@@ -11,10 +11,6 @@ export async function createEmployee(employee){
     return post(EMPLOYEE_URL, employee);
 }
 
-export async function updateEmployee(id, newEmployee){
-    return put(`${EMPLOYEE_URL}/${id}`, newEmployee);
-}
-
 export async function deleteEmployee(id){
     console.log(id  + id);
 

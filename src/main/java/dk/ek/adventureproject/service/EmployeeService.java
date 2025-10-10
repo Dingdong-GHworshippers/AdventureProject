@@ -6,7 +6,13 @@ import dk.ek.adventureproject.dto.EmployeeDTO;
 import dk.ek.adventureproject.dto.Mapper;
 import dk.ek.adventureproject.repo.EmployeeRepo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,10 +53,14 @@ public class EmployeeService {
     }
 
     public void deleteEmployee(Long id) {
-        if(employeeRepo.existsById(id)) {
-            employeeRepo.deleteById(id);
-        } else {
+        if (!employeeRepo.existsById(id)) {
             throw new RuntimeException("Employee not found");
+        }
+
+        try {
+            employeeRepo.deleteById(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new RuntimeException("Kan ikke slette bruger: Bruger tilhøre aktivitet");
         }
     }
 
@@ -59,5 +69,7 @@ public class EmployeeService {
                 .map(mapper::toDto)
                 .orElseThrow(() -> new RuntimeException("Forkert brugernavn eller adgangskode"));
     }
+
+
 
 }

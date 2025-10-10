@@ -55,6 +55,22 @@ public class ActivityTimeslotController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping("/{id}/assign")
+    public ResponseEntity<ActivityTimeslot> assignEmployeeToTimeslot(
+            @PathVariable Long id,
+            @RequestBody Long employeeId
+    ) {
+        ActivityTimeslot updated = activityTimeslotService.assignEmployeeToTimeslot(id, employeeId);
+        return ResponseEntity.ok(updated);
+    }
 
+    @PostMapping("/{id}/unassign")
+    public ResponseEntity<ActivityTimeslot> unassignEmployeeFromTimeslot(
+            @PathVariable Long id,
+            @RequestBody Long employeeId
+    ) {
+        ActivityTimeslot updated = activityTimeslotService.unassignEmployeeFromTimeslot(id, employeeId);
+        return ResponseEntity.ok(updated);
+    }
 
 }

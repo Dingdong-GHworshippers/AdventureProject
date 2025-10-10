@@ -1,5 +1,7 @@
 package dk.ek.adventureproject.Model.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Role {
     MANAGER ("Manager"),
     EMPLOYEE ("Employee");
@@ -11,6 +13,7 @@ public enum Role {
     }
 
     @Override
+    @JsonValue
     public String toString() {
         return prettyprint;
     }

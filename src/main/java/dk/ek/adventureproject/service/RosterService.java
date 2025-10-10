@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +44,8 @@ public class RosterService {
             Roster roster = optionalRoster.get();
             roster.setDate(rosterDetails.getDate());
             roster.setEmployee(rosterDetails.getEmployee());
-
+            roster.setShiftStart(rosterDetails.getShiftStart());
+            roster.setShiftEnd(rosterDetails.getShiftEnd());
             return rosterRepo.save(roster);
         } else {
             throw new RuntimeException("Roster not found with id " + id);
@@ -72,14 +74,21 @@ public class RosterService {
     }
 
     // CREATE roster for employee on a given date
-    public Roster createRosterForEmployee(Long employeeId, LocalDate date) {
-        Optional<Employee> optionalEmployee = employeeRepo.findById(employeeId);
+    public Roster createRosterForEmployee(Long employeeId, LocalDate date, LocalTime start, LocalTime end) {
+        Employee employee = employeeRepo.findById(employeeId)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id " + employeeId));
 
-        if (optionalEmployee.isPresent()) {
-            Roster roster = new Roster(date, optionalEmployee.get());
-            return rosterRepo.save(roster);
-        } else {
-            throw new RuntimeException("Employee not found with id " + employeeId);
-        }
+        Roster roster = new Roster(date, start, end, employee);
+        return rosterRepo.save(roster);
+    }
+
+
+
+    public List<Roster> getRosterByDate(LocalDate date) {
+        return rosterRepo.findByDate(date);
+    }
+
+    public Roster saveRoster(Roster roster) {
+        return rosterRepo.save(roster);
     }
 }
