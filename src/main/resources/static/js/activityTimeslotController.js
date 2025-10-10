@@ -5,6 +5,8 @@ import {
     deleteTimeslot
 } from "./api/activityTimeslotApi.js";
 
+import {getActivity} from "./api/activityApi.js";
+
 import {
     renderActivityTimeslots,
     fillTimeslotForm,
@@ -12,12 +14,14 @@ import {
 
 const tableBody = document.querySelector("#activity-timeslot-table tbody");
 const form = document.getElementById("activity-timeslot-form");
+const activitySelect = document.getElementById("activity");
 
 let timeslots = [];
 let editTimeslotId = null;
 
 document.addEventListener("DOMContentLoaded", async () => {
     await loadAndRenderTimeslots();
+    await populateActivitiesDropdown();
 });
 
 // === FETCH AND RENDER TIMESLOTS ===
@@ -60,8 +64,9 @@ tableBody.addEventListener("click", async (event) => {
         try {
             await deleteTimeslot(id);
             timeslots = timeslots.filter(t => t.id != id);
-            renderActivityTimeslots(timeslots, tableBody);
+            loadAndRenderTimeslots()
             console.log(`Timeslot #${id} slettet`);
+
         } catch (err) {
             console.error("Fejl ved sletning", err);
         }
@@ -101,3 +106,18 @@ form.addEventListener("submit", async (event) => {
         console.error("Fejl ved oprettelse eller opdatering", err);
     }
 });
+
+async function populateActivitiesDropdown() {
+    try {
+        const activities = await getActivity();
+        activitySelect.innerHTML = `<option value="">Vælg aktivitet</option>`;
+        activities.forEach(activity => {
+            const option = document.createElement("option");
+            option.value = activity.id;
+            option.textContent = activity.activityName;
+            activitySelect.appendChild(option);
+        });
+    } catch (err) {
+        console.error("Fejl ved indlæsning af aktiviteter", err);
+    }
+}
