@@ -1,5 +1,5 @@
 // This method iterates through all connected activityTimeslots and maps the activity names
-// Since a booking can contain several activityTimeslots, we need to find the earliest startTime and latest endTime
+// Since a booking can contain several activityTimeslots, we need to find the earliest startTime and latest end
 export function renderBookings(bookings, tableBodyEl) {
     tableBodyEl.innerHTML = "";
 
@@ -9,8 +9,13 @@ export function renderBookings(bookings, tableBodyEl) {
         // Get activityTimeslots safely
         const timeslots = booking.activityTimeslots || [];
 
-        // Collect activity names and times
-        const activityNames = timeslots.map(ts => ts.activity?.activityName || "Unknown").join(", ");
+        // Collect activity names and make them clickable to access the activity timeslot page for said activity
+        const activityLinks = timeslots.map(ts => {
+            const name = ts.activity?.activityName || "Unknown";
+            const id = ts.id;
+            return `<a href="/activity-timeslot-page.html?id=${id}">${name}</a>`;
+        }).join(", ");
+
         const startTimes = timeslots.map(ts => new Date(ts.startTime));
         const endTimes = timeslots.map(ts => new Date(ts.endTime));
 
@@ -21,21 +26,16 @@ export function renderBookings(bookings, tableBodyEl) {
         const formattedStartTime = formatTime(earliestStartTime);
         const formattedEndTime = formatTime(latestEndTime);
 
-        // Output (for DOM or console)
-        console.log(`Booking on ${bookingDate}`);
-        console.log(`Activity: ${activityNames}`);
-        console.log(`Time: ${formattedStartTime} - ${formattedEndTime}`);
-        console.log(`Min age: ${booking.minAge}, Price: ${booking.price}`);
-
 
         const row = document.createElement("tr");
         row.dataset.bookingId = booking.id;
         row.innerHTML = `
+            <td>${booking.id}</td>
             <td>${booking.customer.name}</td>
             <td>${booking.date}</td>
             <td>${formattedStartTime}</td>
             <td>${formattedEndTime}</td>
-            <td>${activityNames}</td>
+            <td>${activityLinks}</td>
             <td>${booking.minAge}</td>
             <td>${booking.price}</td>
            
@@ -48,10 +48,10 @@ export function renderBookings(bookings, tableBodyEl) {
     });
 }
 
-// ======== NOT FINISED Unsure how the form should display each value, need to return to this one=======
+// Fills booking form with existing date from booking field that is not activityTimeslot related
 export function fillBookingForm(form, booking) {
-    form.customerId.value = booking.customer?.id || "";
-    form.date.value = booking.date || "";
+    form.bookingId.value = booking.id || "";
+    form.customer.value = booking.customer?.name || "";
     form.date.value = booking.date || "";
     form.minAge.value = booking.minAge || "";
     form.price.value = booking.price || "";

@@ -12,7 +12,7 @@ export async function createTimeslot(activity){
 }
 
 export async function updateTimeslot(id, newActivity){
-    return put(`${BASE_URL}/${id}`, newActivity);
+    return put(`${TIMESLOT_URL}/${id}`, newActivity);
 }
 
 export async function deleteTimeslot(id){

@@ -11,6 +11,7 @@
 <table id="bookings-table">
     <thead>
     <tr>
+        <th> Booking ID </th>
         <th> Kunde</th>
         <th> Dato </th>
         <th> Starttid </th>
@@ -29,12 +30,10 @@
 
 <form id="booking-form">
     <p> Opret eller rediger booking her</p>
-    <!-- Probably needs to be a drop down/search of customers -->
-    <select name="customerId" id="customerId" required>
-        <option value="">Vælg kunde</option>
-    </select>
+    <input type="number" name = "bookingId" id="bookingId" placeholder="Booking ID" readonly>
+    <input type="text" name = "customer" id="customer" placeholder="Kunde" readonly>
     <input type="date" name="date" id="date" placeholder="Dato">
-    <input type="number" name="min-age" id="min-age" placeholder="Mindste alder">
+    <input type="number" name="minAge" id="minAge" placeholder="Mindste alder">
     <input type="number" name="price" id="price" placeholder="Pris">
 
     <button type="submit"> Bekræft </button>

@@ -20,4 +20,14 @@ public class WebController {
     public String makeBookingPage(){
         return "make-booking-page.html";
     }
+
+    @GetMapping("/activity-timeslots")
+    public String showActivityTimeslots(){
+        return "activity-timeslot-page.html";
+    }
+
+    @GetMapping("/activity-timeslots-page/{id}")
+    public String showTimeslotDetailsPage() {
+        return "activity-timeslot-page";
+    }
 }
