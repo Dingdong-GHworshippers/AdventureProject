@@ -1,0 +1,83 @@
+/* Reset og basis */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #0f172a;
+    background-color: #f9fafb;
+    height: 100dvh;
+
+}
+
+/* Hero sektion */
+.hero {
+    background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
+    center/cover no-repeat;
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background: #22c55e;
+    color: #04110a;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #16a34a;
+}
+
+/* Content sektion */
+.content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+.content p {
+    margin-bottom: 15px;
+}
+
+.admin-login-container {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.admin-login-btn {
+    background-color: #0f5132;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.admin-login-btn:hover {
+    background-color: #5cae63;
+    transform: scale(1.05);
+}
