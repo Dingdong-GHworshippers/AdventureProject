@@ -1,7 +1,9 @@
 package dk.ek.adventureproject.Service;
 
 import dk.ek.adventureproject.Model.ActivityTimeslot;
+import dk.ek.adventureproject.Model.Employee;
 import dk.ek.adventureproject.repo.ActivityTimeslotRepository;
+import dk.ek.adventureproject.repo.EmployeeRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class ActivityTimeslotService {
 
     private final ActivityTimeslotRepository activityTimeslotRepository;
+    private final EmployeeRepo employeeRepo;
 
     public List<ActivityTimeslot> generateTimeslotsForDay(LocalDate date) {
         List<ActivityTimeslot> slots = new ArrayList<>();
@@ -96,5 +99,25 @@ public class ActivityTimeslotService {
         activityTimeslotRepository.delete(activityTimeslot);
     }
 
+    public ActivityTimeslot assignEmployeeToTimeslot(Long timeslotId, Long employeeId) {
+        ActivityTimeslot ts = activityTimeslotRepository.findById(timeslotId)
+                .orElseThrow(() -> new RuntimeException("Timeslot not found"));
+        Employee emp = employeeRepo.findById(employeeId)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
 
+        if (!ts.getEmployees().contains(emp)) {
+            ts.getEmployees().add(emp);
+        }
+        return activityTimeslotRepository.save(ts);
+    }
+
+    public ActivityTimeslot unassignEmployeeFromTimeslot(Long timeslotId, Long employeeId) {
+        ActivityTimeslot ts = activityTimeslotRepository.findById(timeslotId)
+                .orElseThrow(() -> new RuntimeException("Timeslot not found"));
+        Employee emp = employeeRepo.findById(employeeId)
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        ts.getEmployees().remove(emp);
+        return activityTimeslotRepository.save(ts);
+    }
 }
