@@ -66,9 +66,9 @@ public class Mapper {
             ts.setEmployees(List.of());
             timeslots.add(ts);
         }
-
-
         return timeslots;
     }
+
+
 
 }

@@ -98,3 +98,21 @@ tr:nth-child(even) {
 .roster-row .save-btn:hover {
     background-color: #16a34a;
 }
+th[data-key] {
+    position: relative;
+    padding-right: 1.2em; /* Reserve space for arrow */
+}
+
+th[data-key]::after {
+    content: ''; /* Empty by default */
+    position: absolute;
+    right: 0.4em;
+}
+
+th[data-key].sorted-asc::after {
+    content: '▲';
+}
+
+th[data-key].sorted-desc::after {
+    content: '▼';
+}
