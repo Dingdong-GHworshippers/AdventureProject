@@ -31,8 +31,6 @@ public class InitData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // --- GENERATE TIMESLOTS ---
-        activityTimeslotService.generateTimeslotsForNextMonth();
 
         // --- PRODUCTS ---
         Product burger = new Product(0, ProductType.FOOD, "Burger" , 15.0);
@@ -128,6 +126,9 @@ public class InitData implements CommandLineRunner {
         rosterService.createRoster(roster1);
         rosterService.createRoster(roster2);
         rosterService.createRoster(roster3);
+
+        // --- GENERATE TIMESLOTS ---
+        activityTimeslotService.generateTimeslotsForNextMonth();
     }
 
 //    @Override

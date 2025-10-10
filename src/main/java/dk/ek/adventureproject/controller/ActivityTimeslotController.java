@@ -24,6 +24,11 @@ public class ActivityTimeslotController {
         return ResponseEntity.ok(activityTimeslotService.getAllActivityTimeslots());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ActivityTimeslot> getTimeslotById(@PathVariable Long id){
+        return ResponseEntity.ok(activityTimeslotService.getActivityTimeslotById(id));
+    }
+
     @GetMapping("/by-date")
     public ResponseEntity<List<ActivityTimeslot>> getTimeslotsByDate(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
