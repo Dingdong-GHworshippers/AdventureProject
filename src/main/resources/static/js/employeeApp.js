@@ -139,6 +139,8 @@ async function renderRoster() {
     // 3️⃣ Render only valid timeslots
     validTimeslots.forEach(ts => {
         const activityName = ts.activity?.activityName || "—";
+        const dateObj = new Date(ts.startTime);
+        const date = dateObj.toLocaleDateString("da-DK"); // or "en-GB", "en-US"
         const start = ts.startTime ? ts.startTime.substring(11, 16) : "—";
         const end = ts.endTime ? ts.endTime.substring(11, 16) : "—";
         const employees = (ts.employees && ts.employees.length > 0)
@@ -148,6 +150,7 @@ async function renderRoster() {
         const html = `
       <tr data-id="${ts.id}">
         <td>${activityName}</td>
+        <td>${date}</td>
         <td>${start}</td>
         <td>${end}</td>
         <td>${employees}</td>
