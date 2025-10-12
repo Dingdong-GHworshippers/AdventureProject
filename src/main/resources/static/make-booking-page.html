@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>Book Activities</title>
+    <link rel="stylesheet" href="/css/see-bookings.css">
+    <link rel="stylesheet" href="/css/header-footer.css">
 </head>
 <body>
+<app-header></app-header>
+<main style="padding-left:5%">
+
 <h1>Book an Activity</h1>
 
 <label for="booking-date">Select Date:</label>
@@ -20,7 +25,10 @@
     <input type="number" id="min-age" placeholder="Yngste alder i selskabet" required />
     <button type="submit">Book</button>
 </form>
+</main>
+<app-footer></app-footer>
 
+<script src="/js/main.js"></script>
 <script type="module" src="./js/makeBookingController.js"></script>
 </body>
 </html>

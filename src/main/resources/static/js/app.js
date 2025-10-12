@@ -27,7 +27,7 @@ tableBody.addEventListener("click", (e) => {
 
     if (target.classList.contains("book-button")) {
         // Navigate to the booking page for this activity
-        window.location.href = `/bookings-page.html?activityId=${activityId}`;
+        window.location.href = `/make-booking-page.html?activityId=${activityId}`;
     }
 });
 
