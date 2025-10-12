@@ -6,8 +6,8 @@ class AppHeader extends HTMLElement {
           <img src="/img/AA.png" alt="Adventure Alley Logo" class="logo">
           <div class="nav-links">
           <a href="index.html">Forside</a>
-          <a href="booking.html">Booking</a>
-          <a href="contact.html">Kontakt</a>
+          <a href="see-activities.html">Booking</a>
+          <a href="about-us.html">Kontakt</a>
           <a href="gallery.html">Galleri</a>
          </div>
         </nav>

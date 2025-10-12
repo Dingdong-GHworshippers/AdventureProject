@@ -4,6 +4,9 @@ import { getTimeslotsByDate } from "./api/activityTimeslotApi.js";
 const timeslotList = document.getElementById("timeslot-list");
 const dateInput = document.getElementById("booking-date");
 const form = document.getElementById("booking-form");
+const params = new URLSearchParams(window.location.search);
+const activityId = params.get("activityId");
+
 
 // Sets the date input for todays date default
 dateInput.value = new Date().toISOString().split("T")[0];

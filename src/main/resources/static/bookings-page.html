@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Bookings</title>
+    <link rel="stylesheet" href="/css/see-bookings.css">
+    <link rel="stylesheet" href="/css/header-footer.css">
 
 </head>
 <body>
+<app-header></app-header>
 
+<main>
+<div style="align-items: center; display: flex; justify-content: space-around;">
 <table id="bookings-table">
     <thead>
     <tr>
@@ -27,6 +32,8 @@
     </tbody>
 
 </table>
+</div>
+<div style="align-content: center; display: flex; justify-content: space-around;">
 
 <form id="booking-form">
     <p> Opret eller rediger booking her</p>
@@ -38,7 +45,14 @@
 
     <button type="submit"> Bekræft </button>
 </form>
+</div>
+</main>
 
+<app-footer></app-footer>
+
+<script src="/js/main.js"></script>
 <script type="module" src="/js/bookingController.js"></script>
 </body>
+
+
 </html>

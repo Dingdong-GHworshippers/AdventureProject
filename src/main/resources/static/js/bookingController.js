@@ -5,6 +5,8 @@ import {renderBookings, fillBookingForm, resetBookingForm} from "./bookingView.j
 const tableBody = document.querySelector("#bookings-table tbody");
 const form = document.getElementById("booking-form");
 
+
+
 let bookings = [];
 let editBookingId = null;
 
