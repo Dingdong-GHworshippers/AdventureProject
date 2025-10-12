@@ -16,42 +16,43 @@
         <!-- Left side: roster -->
         <section id="roster-section">
             <h2>Activity Timeslots</h2>
-            <table id="roster-table">
+            <table id="roster-table" class="aligned-table">
                 <thead>
                 <tr>
-                    <th>Activity</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th>Assigned Employees</th>
-                    <th>Actions</th>
+                    <th data-key="activityName">Aktivitet</th>
+                    <th data-key="date">Dato</th>
+                    <th data-key="start">Start</th>
+                    <th data-key="end">Slut</th>
+                    <th data-key="employees">Ansatte</th>
+                    <th data-key="actions">Handlinger</th>
                 </tr>
                 </thead>
                 <tbody id="roster-table-body"></tbody>
             </table>
         </section>
 
-        <!-- Right side: employee table -->
         <section id="employee-section">
             <h2 class="center">Add Employee</h2>
             <form id="employee-form" class="mb-4 flex" autocomplete="off">
                 <input type="hidden" id="id" name="id" value="" />
                 <input type="text" id="username" name="username" placeholder="Username" required />
                 <input type="text" id="password" name="password" placeholder="Password" required />
-                <label for="role"> Role </label>
-                <select name =role id="role">
+                <label for="role">Role</label>
+                <select name="role" id="role">
                     <option value="Manager">Manager</option>
                     <option value="Employee">Employee</option>
                 </select>
                 <button type="submit">Add Employee</button>
             </form>
+
             <h2>Employees</h2>
-            <table id="employee-table">
+            <table id="employee-table" class="aligned-table">
                 <thead>
                 <tr>
                     <th data-key="id">ID</th>
                     <th data-key="userName">Username</th>
                     <th data-key="role">Role</th>
-                    <th></th>
+                    <th data-key="actions">Handlinger</th>
                 </tr>
                 </thead>
                 <tbody id="employee-table-body"></tbody>
