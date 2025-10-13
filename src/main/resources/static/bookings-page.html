@@ -36,9 +36,13 @@
 <div style="align-content: center; display: flex; justify-content: space-around;">
 
 <form id="booking-form">
-    <p> Opret eller rediger booking her</p>
+    <p> Rediger booking her</p>
     <input type="number" name = "bookingId" id="bookingId" placeholder="Booking ID" readonly>
-    <input type="text" name = "customer" id="customer" placeholder="Kunde" readonly>
+
+    <select name="customerId" id="customerId">
+        <option value="">Vælg kunde</option>
+    </select>
+
     <input type="date" name="date" id="date" placeholder="Dato">
     <input type="number" name="minAge" id="minAge" placeholder="Mindste alder">
     <input type="number" name="price" id="price" placeholder="Pris">

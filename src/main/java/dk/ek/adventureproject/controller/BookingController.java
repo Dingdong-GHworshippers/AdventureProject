@@ -6,6 +6,7 @@ import dk.ek.adventureproject.Service.BookingService;
 import dk.ek.adventureproject.Service.CustomerService;
 import dk.ek.adventureproject.dto.BookingRequestDTO;
 import dk.ek.adventureproject.dto.Mapper;
+import dk.ek.adventureproject.dto.editBookingDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -69,12 +70,12 @@ public class BookingController {
 
     //Updates by id
     @PutMapping("/{id}")
-    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody Booking booking){
+    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody editBookingDTO editBookingDTO){
         if (bookingService.getBookingById(id) == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        Booking updatedBooking = bookingService.updateBooking(id, booking);
+        Booking updatedBooking = bookingService.updateBooking(id, editBookingDTO);
         return ResponseEntity.ok(updatedBooking);
     }
 

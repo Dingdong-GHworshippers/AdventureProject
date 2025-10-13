@@ -6,6 +6,7 @@ import dk.ek.adventureproject.Model.Customer;
 import dk.ek.adventureproject.Model.Employee;
 import dk.ek.adventureproject.Service.ActivityService;
 import dk.ek.adventureproject.Service.ActivityTimeslotService;
+import dk.ek.adventureproject.Service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +19,12 @@ public class Mapper {
 
     private final ActivityService activityService;
     private final ActivityTimeslotService activityTimeslotService;
+    private final BookingService bookingService;
 
-    public Mapper(ActivityService activityService, ActivityTimeslotService activityTimeslotService) {
+    public Mapper(ActivityService activityService, ActivityTimeslotService activityTimeslotService, BookingService bookingService) {
         this.activityService = activityService;
         this.activityTimeslotService = activityTimeslotService;
+        this.bookingService = bookingService;
     }
 
     public EmployeeDTO toDto(Employee employee) {
@@ -68,6 +71,15 @@ public class Mapper {
         }
         return timeslots;
     }
+
+    /*
+    public Booking editBookingDtoToBooking(Booking existingBooking, editBookingDTO editBookingDTO){
+        existingBooking.setDate(editBookingDTO.date());
+        existingBooking.setMinAge(editBookingDTO.minAge());
+        existingBooking.setPrice(editBookingDTO.price());
+
+        return existingBooking;
+    }*/
 
 
 

@@ -51,7 +51,7 @@ export function renderBookings(bookings, tableBodyEl) {
 // Fills booking form with existing date from booking field that is not activityTimeslot related
 export function fillBookingForm(form, booking) {
     form.bookingId.value = booking.id || "";
-    form.customer.value = booking.customer?.name || "";
+    form.customerId.value = booking.customer?.id || "";
     form.date.value = booking.date || "";
     form.minAge.value = booking.minAge || "";
     form.price.value = booking.price || "";

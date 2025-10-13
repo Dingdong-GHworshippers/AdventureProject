@@ -1,6 +1,8 @@
 package dk.ek.adventureproject.Service;
 
 import dk.ek.adventureproject.Model.*;
+import dk.ek.adventureproject.dto.Mapper;
+import dk.ek.adventureproject.dto.editBookingDTO;
 import dk.ek.adventureproject.repo.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class BookingService {
 
     private final BookingRepository bookingRepository;
+    private final CustomerService customerService;
 
     public boolean isOfAge(Booking booking){
         int activityMinAge = 20;
@@ -92,30 +95,28 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
-    // Updates booking and iterates through timeslots and updates them aswell
-    public Booking updateBooking(Long id, Booking booking){
+    // Updates booking from DTO
+    public Booking updateBooking(Long id, editBookingDTO booking){
         Optional<Booking> optionalBooking = bookingRepository.findById(id);
         if (optionalBooking.isEmpty()){
-            throw new RuntimeException("Customer not found with id "+id);
+            throw new RuntimeException("Booking not found with id "+id);
         }
 
-        Booking updatedBooking = optionalBooking.get();
+        Booking existingBooking = optionalBooking.get();
 
-        List<ActivityTimeslot> timeslots = updatedBooking.getActivityTimeslots();
-        if (timeslots != null){
-            for (var slots: timeslots){
-                slots.setBooking(booking);
+        if (booking.customerId() != null) {
+            Customer customer = customerService.getCustomerById(booking.customerId());
+            if (customer == null) {
+                throw new RuntimeException("Customer not found with id " + booking.customerId());
             }
-            updatedBooking.setActivityTimeslots(timeslots);
+            existingBooking.setCustomer(customer);
         }
 
-        updatedBooking.setBookingOrder(booking.getBookingOrder());
-        updatedBooking.setDate(booking.getDate());
-        updatedBooking.setCustomer(booking.getCustomer());
-        updatedBooking.setMinAge(booking.getMinAge());
-        updatedBooking.setPrice(calculateBookingPrice(updatedBooking));
+        existingBooking.setDate(booking.date());
+        existingBooking.setMinAge(booking.minAge());
+        existingBooking.setPrice(booking.price());
 
-        return bookingRepository.save(updatedBooking);
+        return bookingRepository.save(existingBooking);
     }
 
     // Deletes booking
