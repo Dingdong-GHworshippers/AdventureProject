@@ -29,14 +29,16 @@
 </table>
 
 <form id="activity-timeslot-form">
-  <p> Opret eller rediger aktivitetstidspunkt her</p>
+  <p> Rediger aktivitet/tidspunkt her</p>
   <input type="number" name = "timeslotId" id="timeslotId" placeholder="Timeslot ID" readonly>
+  <input type="hidden" name="startDate" id="startDate">
+  <input type="hidden" name="endDate" id="endDate">
+
   <input type="time" name="startTime" id="startTime" placeholder="Starttid">
-  <input type="time" name="endtime" id="endTime" placeholder="Sluttid">
+  <input type="time" name="endTime" id="endTime" placeholder="Sluttid">
   <select name="activityId" id="activity">
     <option value="">Vælg aktivitet</option>
   </select>
-  <input type="text" name="employee" id="employee" placeholder="Medarbejder">
 
   <button type="submit"> Bekræft </button>
 </form>

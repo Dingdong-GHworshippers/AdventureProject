@@ -77,16 +77,14 @@ tableBody.addEventListener("click", async (event) => {
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    // Combine hidden date with visible time as only time is editable
+    const startDateTime = `${form.startDate.value}T${form.startTime.value}:00`;
+    const endDateTime = `${form.endDate.value}T${form.endTime.value}:00`;
+
     const timeslotPayload = {
-        startTime: form.startTime.value,
-        endTime: form.endTime.value,
-        activity: {
-            id: form.activityId.value
-        },
-        employees: form.employee.value
-            .split(",")
-            .map(id => ({ id: parseInt(id.trim()) }))
-            .filter(emp => !isNaN(emp.id)),
+        startTime: startDateTime,
+        endTime: endDateTime,
+        activityId: parseInt(form.activityId.value)
     };
 
     try {

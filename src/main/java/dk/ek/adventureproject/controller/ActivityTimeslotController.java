@@ -3,6 +3,7 @@ package dk.ek.adventureproject.controller;
 
 import dk.ek.adventureproject.Model.ActivityTimeslot;
 import dk.ek.adventureproject.Service.ActivityTimeslotService;
+import dk.ek.adventureproject.dto.editActivityTimeslotDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,9 @@ public class ActivityTimeslotController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ActivityTimeslot> updateActivityTimeslot(@PathVariable Long id, @RequestBody ActivityTimeslot activityTimeslot) {
+    public ResponseEntity<ActivityTimeslot> updateActivityTimeslot(@PathVariable Long id, @RequestBody editActivityTimeslotDTO activityTimeslotDTO) {
         try{
-            return  ResponseEntity.ok(activityTimeslotService.updateActivityTimeslot(id, activityTimeslot));
+            return  ResponseEntity.ok(activityTimeslotService.updateActivityTimeslot(id, activityTimeslotDTO));
         }catch (RuntimeException e){
             return ResponseEntity.notFound().build();
         }
