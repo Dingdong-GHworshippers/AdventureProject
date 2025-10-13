@@ -9,6 +9,7 @@ class AppHeader extends HTMLElement {
           <a href="booking.html">Booking</a>
           <a href="contact.html">Kontakt</a>
           <a href="gallery.html">Galleri</a>
+          <a href="products.html">Produkter</a>
          </div>
         </nav>
       </header>
