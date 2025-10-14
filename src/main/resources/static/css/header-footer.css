@@ -14,7 +14,7 @@
     max-width: 100%;
 }
 
-.column a{
+.column a, .column strong{
     padding-left: 5%;
 }
 
@@ -132,8 +132,9 @@ footer a:hover {
  header {
      background-color: #0f5132; /* dark green */
      color: white;
-     padding: 1rem 0;
+     padding: 0.5rem 0;
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
  }
 
 .nav-links {
@@ -143,7 +144,7 @@ footer a:hover {
 }
 
 nav img {
-    padding: 5px 5px 5px 16px;
+    padding: 5px 5px 5px 5px;
     height: 64px;
     justify-content: left;
 }
@@ -183,7 +184,4 @@ nav a:hover::after {
         align-items: center;
         gap: 1rem;
     }
-}
-footer {
-    width: 100%;
 }

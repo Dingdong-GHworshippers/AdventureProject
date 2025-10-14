@@ -11,39 +11,32 @@ body {
 
 }
 
-/* Hero sektion */
-.hero {
-    background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55)),
-    center/cover no-repeat;
-    color: #fff;
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-.btn {
-    display: inline-block;
-    background: #22c55e;
-    color: #04110a;
-    padding: 12px 24px;
+button {
+    color: white;
+    border: none;
     border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.btn:hover {
-    background: #16a34a;
+/* Book (green) button */
+.book-button {
+    background-color: #22c55e;
 }
+.book-button:hover {
+    background-color: #16a34a;
+}
+
+/* Delete (red) button */
+.delete-button {
+    background-color: #dc2626;
+}
+.delete-button:hover {
+    background-color: #b91c1c;
+}
+
+
 
 /* Content sektion */
 .content {
