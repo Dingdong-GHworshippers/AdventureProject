@@ -23,7 +23,6 @@ public class BookingService {
                 activityMinAge = ts.getActivity().getMinAge();
             }
         }
-
         return booking.getMinAge() >= activityMinAge;
     }
 
@@ -127,10 +126,6 @@ public class BookingService {
 
         bookingRepository.delete(booking);
     }
-
-
-
-
 }
 
 

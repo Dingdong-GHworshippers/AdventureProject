@@ -16,7 +16,6 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-
     public List<Product> findByType(ProductType type) {
         return productRepository.findByType(type);
     }
@@ -29,11 +28,9 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-
     public Product save(Product product) {
         return productRepository.save(product);
     }
-
 
     public void deleteById(Long id) {
         productRepository.deleteById(id);

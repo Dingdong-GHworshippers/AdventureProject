@@ -60,8 +60,6 @@ public class CustomerService {
             }
             updatedCustomer.setBookings(bookings);
         }
-
-
         return customerRepository.save(updatedCustomer);
     }
 

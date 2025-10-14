@@ -43,7 +43,6 @@ public class BookingOrderService {
         bookingOrderRepository.deleteById(id);
     }
 
-
     public boolean existsById(Long id) {
         return bookingOrderRepository.existsById(id);
     }

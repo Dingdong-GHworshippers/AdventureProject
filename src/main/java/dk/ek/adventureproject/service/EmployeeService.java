@@ -64,7 +64,4 @@ public class EmployeeService {
                 .map(mapper::toDto)
                 .orElseThrow(() -> new RuntimeException("Forkert brugernavn eller adgangskode"));
     }
-
-
-
 }
