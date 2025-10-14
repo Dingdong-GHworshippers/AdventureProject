@@ -31,9 +31,9 @@ public class InitData implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         // --- PRODUCTS ---
-        Product burger = new Product(0, ProductType.FOOD, "Burger" , 15.0);
-        Product soda = new Product(0, ProductType.DRINK, "Sodavand", 5.0);
-        Product tShirt = new Product(0, ProductType.MERCHANDISE, "T-shirt" , 25.0);
+        Product burger = new Product(0, ProductType.FOOD, "Burger" , 50.0);
+        Product soda = new Product(0, ProductType.DRINK, "Sodavand", 15.0);
+        Product tShirt = new Product(0, ProductType.MERCHANDISE, "T-shirt" , 150.0);
         productService.save(burger);
         productService.save(soda);
         productService.save(tShirt);

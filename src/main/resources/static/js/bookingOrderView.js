@@ -8,9 +8,9 @@ const tbody = document.querySelector("#orders-body");
 
 // Vi har kun 3 produkter – definér dem her
 const products = [
-    { id: 1, name: "Burger", price: 15 },
-    { id: 2, name: "Sodavand", price: 5 },
-    { id: 3, name: "T-Shirt", price: 25 }
+    { id: 1, name: "Burger", price: 50 },
+    { id: 2, name: "Sodavand", price: 15 },
+    { id: 3, name: "T-Shirt", price: 150 }
 ];
 
 // Hent og vis alle ordrer
