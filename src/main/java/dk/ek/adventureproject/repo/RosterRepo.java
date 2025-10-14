@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface RosterRepo extends JpaRepository<Roster, Long> {
     List<Roster> findByDate(LocalDate date);
-
 }

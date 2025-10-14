@@ -7,7 +7,5 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface ActivityTimeslotRepository extends JpaRepository<ActivityTimeslot,Long> {
-
     List<ActivityTimeslot> findByStartTimeBetween(LocalDateTime start, LocalDateTime end);
-
 }
