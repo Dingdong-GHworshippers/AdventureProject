@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

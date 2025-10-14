@@ -1,7 +1,6 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.Employee;
-import dk.ek.adventureproject.Service.EmployeeService;
+import dk.ek.adventureproject.service.EmployeeService;
 import dk.ek.adventureproject.dto.EmployeeCreateDTO;
 import dk.ek.adventureproject.dto.EmployeeDTO;
 import lombok.RequiredArgsConstructor;

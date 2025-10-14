@@ -1,7 +1,7 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.Customer;
-import dk.ek.adventureproject.Service.CustomerService;
+import dk.ek.adventureproject.model.Customer;
+import dk.ek.adventureproject.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 

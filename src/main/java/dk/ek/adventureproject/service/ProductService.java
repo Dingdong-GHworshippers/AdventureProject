@@ -1,7 +1,7 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.Product;
-import dk.ek.adventureproject.Model.enums.ProductType;
+import dk.ek.adventureproject.model.Product;
+import dk.ek.adventureproject.model.enums.ProductType;
 import dk.ek.adventureproject.repo.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

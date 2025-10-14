@@ -1,7 +1,7 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
 
-import dk.ek.adventureproject.Model.Activity;
+import dk.ek.adventureproject.model.Activity;
 import dk.ek.adventureproject.repo.ActivityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

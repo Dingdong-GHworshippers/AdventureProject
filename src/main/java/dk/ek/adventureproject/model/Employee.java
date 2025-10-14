@@ -1,9 +1,9 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import dk.ek.adventureproject.Model.enums.Role;
+import dk.ek.adventureproject.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

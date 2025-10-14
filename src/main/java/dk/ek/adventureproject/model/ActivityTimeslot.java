@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

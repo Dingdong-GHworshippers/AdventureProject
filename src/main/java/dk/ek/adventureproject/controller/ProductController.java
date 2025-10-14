@@ -1,8 +1,8 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.Product;
-import dk.ek.adventureproject.Model.enums.ProductType;
-import dk.ek.adventureproject.Service.ProductService;
+import dk.ek.adventureproject.model.Product;
+import dk.ek.adventureproject.model.enums.ProductType;
+import dk.ek.adventureproject.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

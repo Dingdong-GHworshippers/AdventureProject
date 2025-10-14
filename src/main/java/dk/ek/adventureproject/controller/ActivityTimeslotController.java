@@ -1,8 +1,8 @@
 package dk.ek.adventureproject.controller;
 
 
-import dk.ek.adventureproject.Model.ActivityTimeslot;
-import dk.ek.adventureproject.Service.ActivityTimeslotService;
+import dk.ek.adventureproject.model.ActivityTimeslot;
+import dk.ek.adventureproject.service.ActivityTimeslotService;
 import dk.ek.adventureproject.dto.editActivityTimeslotDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

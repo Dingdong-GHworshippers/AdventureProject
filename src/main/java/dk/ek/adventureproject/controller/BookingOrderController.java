@@ -1,9 +1,9 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.BookingOrder;
-import dk.ek.adventureproject.Model.Product;
-import dk.ek.adventureproject.Service.BookingOrderService;
-import dk.ek.adventureproject.Service.ProductService;
+import dk.ek.adventureproject.model.BookingOrder;
+import dk.ek.adventureproject.model.Product;
+import dk.ek.adventureproject.service.BookingOrderService;
+import dk.ek.adventureproject.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,18 +1,13 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.Employee;
+import dk.ek.adventureproject.model.Employee;
 import dk.ek.adventureproject.dto.EmployeeCreateDTO;
 import dk.ek.adventureproject.dto.EmployeeDTO;
 import dk.ek.adventureproject.dto.Mapper;
 import dk.ek.adventureproject.repo.EmployeeRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;

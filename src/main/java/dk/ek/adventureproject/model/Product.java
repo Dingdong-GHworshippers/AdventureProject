@@ -1,11 +1,9 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
-import dk.ek.adventureproject.Model.enums.ProductType;
+import dk.ek.adventureproject.model.enums.ProductType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.*;
 
 @Entity
 @Getter

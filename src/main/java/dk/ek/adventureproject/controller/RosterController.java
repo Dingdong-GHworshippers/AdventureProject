@@ -1,8 +1,8 @@
 package dk.ek.adventureproject.Controller;
 
 
-import dk.ek.adventureproject.Model.Roster;
-import dk.ek.adventureproject.Service.RosterService;
+import dk.ek.adventureproject.model.Roster;
+import dk.ek.adventureproject.service.RosterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

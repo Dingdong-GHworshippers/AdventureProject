@@ -1,7 +1,7 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.Employee;
-import dk.ek.adventureproject.Model.Roster;
+import dk.ek.adventureproject.model.Employee;
+import dk.ek.adventureproject.model.Roster;
 import dk.ek.adventureproject.repo.EmployeeRepo;
 import dk.ek.adventureproject.repo.RosterRepo;
 import lombok.RequiredArgsConstructor;

@@ -1,12 +1,10 @@
 package dk.ek.adventureproject.common;
 
-import dk.ek.adventureproject.Model.*;
-import dk.ek.adventureproject.Model.enums.ProductType;
-import dk.ek.adventureproject.Model.enums.Role;
-import dk.ek.adventureproject.Service.*;
+import dk.ek.adventureproject.model.*;
+import dk.ek.adventureproject.model.enums.ProductType;
+import dk.ek.adventureproject.model.enums.Role;
+import dk.ek.adventureproject.service.*;
 import dk.ek.adventureproject.dto.EmployeeCreateDTO;
-import dk.ek.adventureproject.dto.EmployeeDTO;
-import dk.ek.adventureproject.dto.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

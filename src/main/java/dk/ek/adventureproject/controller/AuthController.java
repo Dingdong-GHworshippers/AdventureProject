@@ -1,6 +1,6 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Service.EmployeeService;
+import dk.ek.adventureproject.service.EmployeeService;
 import dk.ek.adventureproject.dto.EmployeeDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

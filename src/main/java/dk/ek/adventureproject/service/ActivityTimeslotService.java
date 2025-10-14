@@ -1,8 +1,8 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.Activity;
-import dk.ek.adventureproject.Model.ActivityTimeslot;
-import dk.ek.adventureproject.Model.Employee;
+import dk.ek.adventureproject.model.Activity;
+import dk.ek.adventureproject.model.ActivityTimeslot;
+import dk.ek.adventureproject.model.Employee;
 import dk.ek.adventureproject.dto.editActivityTimeslotDTO;
 import dk.ek.adventureproject.repo.ActivityTimeslotRepository;
 import dk.ek.adventureproject.repo.EmployeeRepo;

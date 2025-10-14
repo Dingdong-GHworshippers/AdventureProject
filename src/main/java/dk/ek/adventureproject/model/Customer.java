@@ -1,14 +1,12 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.validation.constraints.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter

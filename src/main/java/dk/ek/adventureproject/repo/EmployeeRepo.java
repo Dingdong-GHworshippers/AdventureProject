@@ -1,6 +1,6 @@
 package dk.ek.adventureproject.repo;
 
-import dk.ek.adventureproject.Model.Employee;
+import dk.ek.adventureproject.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

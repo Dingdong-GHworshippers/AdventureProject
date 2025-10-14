@@ -1,9 +1,9 @@
 package dk.ek.adventureproject.repo;
 
-import dk.ek.adventureproject.Model.Product;
+import dk.ek.adventureproject.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import dk.ek.adventureproject.Model.enums.ProductType;
+import dk.ek.adventureproject.model.enums.ProductType;
 
 import java.util.List;
 

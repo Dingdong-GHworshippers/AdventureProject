@@ -1,13 +1,11 @@
 package dk.ek.adventureproject.dto;
 
-import dk.ek.adventureproject.Model.ActivityTimeslot;
-import dk.ek.adventureproject.Model.Booking;
-import dk.ek.adventureproject.Model.Customer;
-import dk.ek.adventureproject.Model.Employee;
-import dk.ek.adventureproject.Service.ActivityService;
-import dk.ek.adventureproject.Service.ActivityTimeslotService;
-import dk.ek.adventureproject.Service.BookingService;
-import lombok.RequiredArgsConstructor;
+import dk.ek.adventureproject.model.ActivityTimeslot;
+import dk.ek.adventureproject.model.Customer;
+import dk.ek.adventureproject.model.Employee;
+import dk.ek.adventureproject.service.ActivityService;
+import dk.ek.adventureproject.service.ActivityTimeslotService;
+import dk.ek.adventureproject.service.BookingService;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

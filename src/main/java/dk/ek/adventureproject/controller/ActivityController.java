@@ -1,10 +1,9 @@
 package dk.ek.adventureproject.Controller;
 
 
-import dk.ek.adventureproject.Model.Activity;
-import dk.ek.adventureproject.Service.ActivityService;
+import dk.ek.adventureproject.model.Activity;
+import dk.ek.adventureproject.service.ActivityService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
