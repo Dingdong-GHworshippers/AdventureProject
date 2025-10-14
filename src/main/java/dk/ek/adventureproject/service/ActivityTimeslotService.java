@@ -1,8 +1,8 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.Activity;
-import dk.ek.adventureproject.Model.ActivityTimeslot;
-import dk.ek.adventureproject.Model.Employee;
+import dk.ek.adventureproject.model.Activity;
+import dk.ek.adventureproject.model.ActivityTimeslot;
+import dk.ek.adventureproject.model.Employee;
 import dk.ek.adventureproject.dto.editActivityTimeslotDTO;
 import dk.ek.adventureproject.repo.ActivityTimeslotRepository;
 import dk.ek.adventureproject.repo.EmployeeRepo;
@@ -24,6 +24,7 @@ public class ActivityTimeslotService {
     private final EmployeeRepo employeeRepo;
     private final ActivityService activityService;
 
+    //generates 4 timeslots for a day
     public List<ActivityTimeslot> generateTimeslotsForDay(LocalDate date) {
         List<ActivityTimeslot> slots = new ArrayList<>();
 
@@ -107,6 +108,7 @@ public class ActivityTimeslotService {
         activityTimeslotRepository.delete(activityTimeslot);
     }
 
+    //assign an employee to a timeslot
     public ActivityTimeslot assignEmployeeToTimeslot(Long timeslotId, Long employeeId) {
         ActivityTimeslot ts = activityTimeslotRepository.findById(timeslotId)
                 .orElseThrow(() -> new RuntimeException("Timeslot not found"));
@@ -116,16 +118,6 @@ public class ActivityTimeslotService {
         if (!ts.getEmployees().contains(emp)) {
             ts.getEmployees().add(emp);
         }
-        return activityTimeslotRepository.save(ts);
-    }
-
-    public ActivityTimeslot unassignEmployeeFromTimeslot(Long timeslotId, Long employeeId) {
-        ActivityTimeslot ts = activityTimeslotRepository.findById(timeslotId)
-                .orElseThrow(() -> new RuntimeException("Timeslot not found"));
-        Employee emp = employeeRepo.findById(employeeId)
-                .orElseThrow(() -> new RuntimeException("Employee not found"));
-
-        ts.getEmployees().remove(emp);
         return activityTimeslotRepository.save(ts);
     }
 }

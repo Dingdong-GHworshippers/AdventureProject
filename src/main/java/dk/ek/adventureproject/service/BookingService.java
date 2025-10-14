@@ -1,15 +1,11 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.*;
-import dk.ek.adventureproject.dto.Mapper;
+import dk.ek.adventureproject.model.*;
 import dk.ek.adventureproject.dto.editBookingDTO;
 import dk.ek.adventureproject.repo.BookingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
-import java.awt.print.Book;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +23,6 @@ public class BookingService {
                 activityMinAge = ts.getActivity().getMinAge();
             }
         }
-
         return booking.getMinAge() >= activityMinAge;
     }
 
@@ -131,10 +126,6 @@ public class BookingService {
 
         bookingRepository.delete(booking);
     }
-
-
-
-
 }
 
 

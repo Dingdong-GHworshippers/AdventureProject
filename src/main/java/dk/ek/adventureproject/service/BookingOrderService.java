@@ -1,7 +1,7 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.BookingOrder;
-import dk.ek.adventureproject.Model.Product;
+import dk.ek.adventureproject.model.BookingOrder;
+import dk.ek.adventureproject.model.Product;
 import dk.ek.adventureproject.repo.BookingOrderRepo;
 import dk.ek.adventureproject.repo.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -42,7 +42,6 @@ public class BookingOrderService {
 
         bookingOrderRepository.deleteById(id);
     }
-
 
     public boolean existsById(Long id) {
         return bookingOrderRepository.existsById(id);

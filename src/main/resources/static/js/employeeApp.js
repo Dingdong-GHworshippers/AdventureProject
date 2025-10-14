@@ -1,8 +1,7 @@
 import {getEmployees, deleteEmployee, createEmployee} from "./api/employeeApi.js";
 import { getTimeslots, assignEmployee } from "./api/activityTimeslotApi.js";
-import { sortBy } from "./util/sortUtil.js";
+import { sortBy } from "./util/sort.js";
 
-console.log("✅ app.js loaded");
 window.addEventListener("DOMContentLoaded", initApp);
 
 // === Sort globals ===

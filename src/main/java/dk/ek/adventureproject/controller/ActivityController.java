@@ -1,10 +1,9 @@
-package dk.ek.adventureproject.Controller;
+package dk.ek.adventureproject.controller;
 
 
-import dk.ek.adventureproject.Model.Activity;
-import dk.ek.adventureproject.Service.ActivityService;
+import dk.ek.adventureproject.model.Activity;
+import dk.ek.adventureproject.service.ActivityService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +16,6 @@ import java.util.List;
 public class ActivityController {
 
     private final ActivityService activityService;
-
 
     //Returns all activities
     @GetMapping
@@ -41,7 +39,6 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.createActivity(activity));
     }
 
-
     //Updates existing activity
     @PutMapping
     public ResponseEntity<Activity> updateActivity(@RequestBody Activity activity, @PathVariable Long id){
@@ -51,6 +48,7 @@ public class ActivityController {
             return ResponseEntity.notFound().build();
         }
     }
+
     //Deletes activity by id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteActivity(@PathVariable Long id){
@@ -61,6 +59,4 @@ public class ActivityController {
             return ResponseEntity.notFound().build();
         }
     }
-
-
 }

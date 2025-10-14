@@ -1,7 +1,7 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
-import dk.ek.adventureproject.Model.Booking;
-import dk.ek.adventureproject.Model.Customer;
+import dk.ek.adventureproject.model.Booking;
+import dk.ek.adventureproject.model.Customer;
 import dk.ek.adventureproject.repo.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -60,8 +60,6 @@ public class CustomerService {
             }
             updatedCustomer.setBookings(bookings);
         }
-
-
         return customerRepository.save(updatedCustomer);
     }
 

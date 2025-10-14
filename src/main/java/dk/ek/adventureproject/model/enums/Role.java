@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Model.enums;
+package dk.ek.adventureproject.model.enums;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

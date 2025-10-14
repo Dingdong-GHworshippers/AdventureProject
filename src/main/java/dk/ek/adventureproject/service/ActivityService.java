@@ -1,7 +1,7 @@
-package dk.ek.adventureproject.Service;
+package dk.ek.adventureproject.service;
 
 
-import dk.ek.adventureproject.Model.Activity;
+import dk.ek.adventureproject.model.Activity;
 import dk.ek.adventureproject.repo.ActivityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,9 @@ public class ActivityService {
 
     private final ActivityRepository activityRepository;
 
-
     public List<Activity> getAllActivities(){
         return activityRepository.findAll();
     }
-
 
     public Activity getActivityById(Long id){
         Optional<Activity> activity = activityRepository.findById(id);
@@ -29,12 +27,10 @@ public class ActivityService {
         return null;
     }
 
-
     public Activity createActivity(Activity activity) {
         activity.setId(null);
         return activityRepository.save(activity);
     }
-
 
     public Activity updateActivity(Activity activity, Long id) {
         Optional<Activity> optionalActivity = activityRepository.findById(id);
@@ -60,5 +56,4 @@ public class ActivityService {
         Activity activity = optionalActivity.get();
         activityRepository.delete(activity);
     }
-
 }

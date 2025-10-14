@@ -1,7 +1,6 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.Employee;
-import dk.ek.adventureproject.Service.EmployeeService;
+import dk.ek.adventureproject.service.EmployeeService;
 import dk.ek.adventureproject.dto.EmployeeCreateDTO;
 import dk.ek.adventureproject.dto.EmployeeDTO;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +34,7 @@ public class EmployeeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
     // Create new employee
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeCreateDTO dto) {
@@ -58,6 +58,4 @@ public class EmployeeController {
                     .body(Map.of("error", "Employee not found"));
         }
     }
-
-
 }

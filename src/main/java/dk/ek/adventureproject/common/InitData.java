@@ -1,12 +1,10 @@
 package dk.ek.adventureproject.common;
 
-import dk.ek.adventureproject.Model.*;
-import dk.ek.adventureproject.Model.enums.ProductType;
-import dk.ek.adventureproject.Model.enums.Role;
-import dk.ek.adventureproject.Service.*;
+import dk.ek.adventureproject.model.*;
+import dk.ek.adventureproject.model.enums.ProductType;
+import dk.ek.adventureproject.model.enums.Role;
+import dk.ek.adventureproject.service.*;
 import dk.ek.adventureproject.dto.EmployeeCreateDTO;
-import dk.ek.adventureproject.dto.EmployeeDTO;
-import dk.ek.adventureproject.dto.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -28,7 +26,6 @@ public class InitData implements CommandLineRunner {
     private final CustomerService customerService;
     private final EmployeeService employeeService;
     private final ProductService productService;
-    private final RosterService rosterService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -127,22 +124,6 @@ public class InitData implements CommandLineRunner {
         booking2 = bookingService.createBooking(booking2);
 
         activityTimeslotService.createActivityTimeslot(curlingAfternoon); // Optional if cascade
-
-        // --- ROSTERS ---
-        LocalTime[] starts = {
-                LocalTime.of(10, 0),
-                LocalTime.of(12, 0),
-                LocalTime.of(14, 0),
-                LocalTime.of(16, 0)
-        };
-
-        for (int i = 0; i < 5; i++) { // next 5 days
-            LocalDate date = LocalDate.now().plusDays(i);
-
-            // assign two employees per day to cover all 4 timeslots (2 each)
-            rosterService.createRoster(new Roster(date, starts[0], starts[1], alice));
-            rosterService.createRoster(new Roster(date, starts[2], starts[3], bob));
-        }
 
         activityTimeslotService.generateTimeslotsForNextMonth();
     }

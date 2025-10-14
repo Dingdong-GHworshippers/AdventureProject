@@ -1,9 +1,11 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.Product;
-import dk.ek.adventureproject.Model.enums.ProductType;
-import dk.ek.adventureproject.Service.ProductService;
+import dk.ek.adventureproject.model.Product;
+import dk.ek.adventureproject.model.enums.ProductType;
+import dk.ek.adventureproject.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,36 +17,56 @@ public class ProductController {
 
     private final ProductService productService;
 
-
+    // get all
     @GetMapping
-    public List<Product> getAllProducts() {
-        return productService.findAll();
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> products = productService.findAll();
+        return ResponseEntity.ok(products);
     }
 
-
+    // get by id
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
-        return productService.findById(id).orElseThrow();
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        return productService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
+    // get by type enum
     @GetMapping("/type/{type}")
-    public List<Product> getProductsByType(@PathVariable ProductType type) {
-        return productService.findByType(type);
+    public ResponseEntity<List<Product>> getProductsByType(@PathVariable ProductType type) {
+        List<Product> products = productService.findByType(type);
+        if (products.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(products);
     }
 
+    // create product
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.save(product);
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        Product savedProduct = productService.save(product);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
     }
 
+    // update product
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        if (productService.findById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
         product.setId(id);
-        return productService.save(product);
+        Product updatedProduct = productService.save(product);
+        return ResponseEntity.ok(updatedProduct);
     }
 
+    // delete by id
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        if (productService.findById(id).isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
         productService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

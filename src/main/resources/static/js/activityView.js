@@ -1,6 +1,5 @@
 import {getActivity, updateActivity, deleteActivity, createActivity} from "./api/activityApi.js";
 
-console.log("✅ app.js loaded");
 window.addEventListener("DOMContentLoaded", initApp);
 
 // === Sort globals ===

@@ -1,9 +1,8 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import dk.ek.adventureproject.Model.enums.Role;
+import dk.ek.adventureproject.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,11 +27,6 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "employee-rosters")
-    private List<Roster> rosters = new ArrayList<>();
-
-
     // Reverse relation to Timeslots, not sure if needed, could potentially be used to show an employees rosterplan.
     @ManyToMany(mappedBy = "employees")
     @JsonBackReference(value = "employee-timeslots")
@@ -46,15 +40,5 @@ public class Employee {
 
     public Employee() {
 
-    }
-
-    public void addRoster(Roster roster) {
-        rosters.add(roster);
-        roster.setEmployee(this);
-    }
-
-    public void removeRoster(Roster roster) {
-        rosters.remove(roster);
-        roster.setEmployee(null);
     }
 }

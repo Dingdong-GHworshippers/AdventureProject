@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Table (name = "activity_timeslots")
 public class ActivityTimeslot {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,7 +32,6 @@ public class ActivityTimeslot {
     @JoinColumn (name = "booking_id")
     private Booking booking;
 
-
     @ManyToMany
     @JsonManagedReference(value = "employee-timeslots")
     @JoinTable(
@@ -43,7 +43,6 @@ public class ActivityTimeslot {
 
     private boolean isBooked;
 
-
     public ActivityTimeslot(Long id, LocalDateTime startTime, LocalDateTime endTime) {
         this.id = id;
         this.startTime = startTime;
@@ -52,5 +51,4 @@ public class ActivityTimeslot {
 
     public ActivityTimeslot() {
     }
-  
 }

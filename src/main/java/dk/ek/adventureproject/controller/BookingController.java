@@ -1,9 +1,9 @@
 package dk.ek.adventureproject.controller;
 
-import dk.ek.adventureproject.Model.*;
-import dk.ek.adventureproject.Service.ActivityTimeslotService;
-import dk.ek.adventureproject.Service.BookingService;
-import dk.ek.adventureproject.Service.CustomerService;
+import dk.ek.adventureproject.model.*;
+import dk.ek.adventureproject.service.ActivityTimeslotService;
+import dk.ek.adventureproject.service.BookingService;
+import dk.ek.adventureproject.service.CustomerService;
 import dk.ek.adventureproject.dto.BookingRequestDTO;
 import dk.ek.adventureproject.dto.Mapper;
 import dk.ek.adventureproject.dto.editBookingDTO;
@@ -89,5 +89,4 @@ public class BookingController {
         bookingService.deleteBooking(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }

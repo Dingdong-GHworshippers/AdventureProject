@@ -1,10 +1,8 @@
-package dk.ek.adventureproject.Model;
+package dk.ek.adventureproject.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-
 
 @Getter
 @Setter
@@ -29,6 +27,5 @@ public class Activity {
     }
 
     public Activity() {
-
     }
 }

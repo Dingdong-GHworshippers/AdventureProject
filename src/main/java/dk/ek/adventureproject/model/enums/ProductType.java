@@ -1,4 +1,4 @@
-package dk.ek.adventureproject.Model.enums;
+package dk.ek.adventureproject.model.enums;
 
 public enum ProductType {
     FOOD ("Mad"),
@@ -15,5 +15,4 @@ public enum ProductType {
     public String toString() {
         return prettyprint;
     }
-
 }
