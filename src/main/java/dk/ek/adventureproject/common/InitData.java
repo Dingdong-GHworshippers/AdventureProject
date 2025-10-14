@@ -143,6 +143,8 @@ public class InitData implements CommandLineRunner {
             rosterService.createRoster(new Roster(date, starts[0], starts[1], alice));
             rosterService.createRoster(new Roster(date, starts[2], starts[3], bob));
         }
+
+        activityTimeslotService.generateTimeslotsForNextMonth();
     }
 
 //    @Override

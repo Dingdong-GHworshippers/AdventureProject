@@ -31,14 +31,21 @@ export function renderActivityTimeslots(timeslots, tableBodyEl) {
 
 // === FILLS FORM FOR EDITING TIMESLOT ===
 export function fillTimeslotForm(form, timeslot) {
-    let startTime = new Date(timeslot.startTime);
-    let endTime = new Date(timeslot.endTime);
-
     form.timeslotId.value = timeslot.id || "";
-    form.startTime.value = formatTime(startTime) || "";
-    form.endTime.value = formatTime(endTime) || "";
+
+    if (timeslot.startTime) {
+        const startDate = new Date(timeslot.startTime);
+        form.startDate.value = startDate.toISOString().split('T')[0]; // Store date
+        form.startTime.value = formatTime(startDate); // Display time
+    }
+
+    if (timeslot.endTime) {
+        const endDate = new Date(timeslot.endTime);
+        form.endDate.value = endDate.toISOString().split('T')[0]; // Store date
+        form.endTime.value = formatTime(endDate); // Display time
+    }
+
     form.activity.value = timeslot.activity?.id || "";
-    form.employee.value = timeslot.employees?.map(e => e.name).join(",") || "";
 }
 
 // === RESET FORM FIELDS ===

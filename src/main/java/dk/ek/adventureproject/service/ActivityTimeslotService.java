@@ -1,7 +1,9 @@
 package dk.ek.adventureproject.Service;
 
+import dk.ek.adventureproject.Model.Activity;
 import dk.ek.adventureproject.Model.ActivityTimeslot;
 import dk.ek.adventureproject.Model.Employee;
+import dk.ek.adventureproject.dto.editActivityTimeslotDTO;
 import dk.ek.adventureproject.repo.ActivityTimeslotRepository;
 import dk.ek.adventureproject.repo.EmployeeRepo;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ public class ActivityTimeslotService {
 
     private final ActivityTimeslotRepository activityTimeslotRepository;
     private final EmployeeRepo employeeRepo;
+    private final ActivityService activityService;
 
     public List<ActivityTimeslot> generateTimeslotsForDay(LocalDate date) {
         List<ActivityTimeslot> slots = new ArrayList<>();
@@ -74,17 +77,22 @@ public class ActivityTimeslotService {
         return activityTimeslotRepository.save(activityTimeslot);
     }
 
-    public ActivityTimeslot updateActivityTimeslot(Long id, ActivityTimeslot activityTimeslot) {
+    public ActivityTimeslot updateActivityTimeslot(Long id, editActivityTimeslotDTO activityTimeslotDTO) {
         Optional<ActivityTimeslot> OptionalActivityTimeslot = activityTimeslotRepository.findById(id);
         if (OptionalActivityTimeslot.isEmpty()) {
             throw new RuntimeException("ActivityTimeslot Not Found with id " + id);
         }
+
         ActivityTimeslot updatedActivityTimeslot = OptionalActivityTimeslot.get();
-        updatedActivityTimeslot.setStartTime(activityTimeslot.getStartTime());
-        updatedActivityTimeslot.setEndTime(activityTimeslot.getEndTime());
-        updatedActivityTimeslot.setBooked(activityTimeslot.isBooked());
-        updatedActivityTimeslot.setEmployees(activityTimeslot.getEmployees());
-        updatedActivityTimeslot.setActivity(activityTimeslot.getActivity());
+
+        if (activityTimeslotDTO.activityId() != null){
+            Activity activity = activityService.getActivityById(id);
+            updatedActivityTimeslot.setActivity(activity);
+        }
+
+        updatedActivityTimeslot.setStartTime(activityTimeslotDTO.startTime());
+        updatedActivityTimeslot.setEndTime(activityTimeslotDTO.endTime());
+
 
         return activityTimeslotRepository.save(updatedActivityTimeslot);
     }
