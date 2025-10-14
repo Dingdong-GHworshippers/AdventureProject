@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component
 public class Mapper {
 
@@ -69,16 +68,4 @@ public class Mapper {
         }
         return timeslots;
     }
-
-    /*
-    public Booking editBookingDtoToBooking(Booking existingBooking, editBookingDTO editBookingDTO){
-        existingBooking.setDate(editBookingDTO.date());
-        existingBooking.setMinAge(editBookingDTO.minAge());
-        existingBooking.setPrice(editBookingDTO.price());
-
-        return existingBooking;
-    }*/
-
-
-
 }
