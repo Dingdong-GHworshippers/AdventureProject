@@ -15,5 +15,4 @@ public enum ProductType {
     public String toString() {
         return prettyprint;
     }
-
 }

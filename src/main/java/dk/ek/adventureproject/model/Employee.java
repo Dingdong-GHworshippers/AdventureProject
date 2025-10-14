@@ -32,7 +32,6 @@ public class Employee {
     @JsonManagedReference(value = "employee-rosters")
     private List<Roster> rosters = new ArrayList<>();
 
-
     // Reverse relation to Timeslots, not sure if needed, could potentially be used to show an employees rosterplan.
     @ManyToMany(mappedBy = "employees")
     @JsonBackReference(value = "employee-timeslots")

@@ -12,6 +12,7 @@ import java.time.LocalTime;
 @Entity
 @Table (name = "roster")
 public class Roster {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,5 +36,4 @@ public class Roster {
         this.shiftEnd = shiftEnd;
         this.employee = employee;
     }
-
 }
