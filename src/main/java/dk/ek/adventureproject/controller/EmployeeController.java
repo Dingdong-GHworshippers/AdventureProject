@@ -34,6 +34,7 @@ public class EmployeeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
     // Create new employee
     @PostMapping
     public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeCreateDTO dto) {
@@ -57,6 +58,4 @@ public class EmployeeController {
                     .body(Map.of("error", "Employee not found"));
         }
     }
-
-
 }

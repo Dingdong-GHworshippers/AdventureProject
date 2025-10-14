@@ -22,12 +22,14 @@ public class BookingOrderController {
         this.productService = productService;
     }
 
+    //get all bookings
     @GetMapping
     public ResponseEntity<List<BookingOrder>> getAllBookingOrders() {
         List<BookingOrder> orders = bookingOrderService.findAll();
         return ResponseEntity.ok(orders);
     }
 
+    //get booking order by id
     @GetMapping("/{id}")
     public ResponseEntity<BookingOrder> getBookingOrderById(@PathVariable Long id) {
         return bookingOrderService.findById(id)
@@ -35,13 +37,15 @@ public class BookingOrderController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-
+    //create booking order
     @PostMapping
     public ResponseEntity<BookingOrder> createBookingOrder(@RequestBody BookingOrder bookingOrder) {
         BookingOrder saved = bookingOrderService.save(bookingOrder);
         return ResponseEntity.created(URI.create("/api/booking-orders/" + saved.getId()))
                 .body(saved);
     }
+
+    //update booking order
     @PutMapping("/{id}")
     public ResponseEntity<BookingOrder> updateBookingOrder(@PathVariable Long id, @RequestBody BookingOrder bookingOrder) {
         if (!bookingOrderService.existsById(id)) {
@@ -52,7 +56,7 @@ public class BookingOrderController {
         return ResponseEntity.ok(updated);
     }
 
-
+    //delete bookingorder
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBookingOrder(@PathVariable Long id) {
         if (!bookingOrderService.existsById(id)) {
@@ -61,6 +65,8 @@ public class BookingOrderController {
         bookingOrderService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    //add a product to order
     @PostMapping("/{orderId}/products/{productId}")
     public ResponseEntity<BookingOrder> addProductToOrder(@PathVariable Long orderId, @PathVariable Long productId) {
         BookingOrder order = bookingOrderService.findById(orderId)
@@ -75,7 +81,7 @@ public class BookingOrderController {
         return ResponseEntity.ok(updated);
     }
 
-    // ⭐ NYT: Fjern produkt fra bookingorder
+    // fjern produkt fra bookingorder
     @DeleteMapping("/{orderId}/products/{productId}")
     public ResponseEntity<BookingOrder> removeProductFromOrder(@PathVariable Long orderId, @PathVariable Long productId) {
         BookingOrder order = bookingOrderService.findById(orderId)
