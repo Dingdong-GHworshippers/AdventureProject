@@ -8,29 +8,53 @@ let isAscending = true;
 
 function initApp(){
     reloadAndRender();
+    setupEventListeners();
+}
+function setupEventListeners(){
+
+    const tableBody = document.querySelector("#activity-table-body");
+
+    const form = document.querySelector("#activity-form")
+
+    // Event delegation for Delete and Book buttons
+
+    tableBody.addEventListener("click", (e) => {
+        const target = e.target;
+        const activityId = target.dataset.id;
+
+        if (target.classList.contains("delete-button")) {
+            // Call your delete function
+            deleteActivity(activityId).then(() => {
+                reloadAndRender();
+            });
+        }
+
+        if (target.classList.contains("book-button")) {
+            // Navigate to the booking page for this activity
+            window.location.href = `/make-booking-page.html?activityId=${activityId}`;
+        }
+    });
+    form.addEventListener("submit",handleFormSubmit)
 }
 
-const tableBody = document.querySelector("#activity-table-body");
+//Event for creating new activity
+async function handleFormSubmit(event){
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form)
 
-// Event delegation for Delete and Book buttons
-tableBody.addEventListener("click", (e) => {
-    const target = e.target;
-    const activityId = target.dataset.id;
+    const activity = {
+        activityName: formData.get("activity-name"),
+        activityDescription: formData.get("activity-description"),
+        minAge:formData.get("minAge"),
+        activityPrice: formData.get("activity-price")
+    };
 
-    if (target.classList.contains("delete-button")) {
-        // Call your delete function
-        deleteActivity(activityId).then(() => {
-            reloadAndRender();
-        });
-    }
+    await createActivity(activity);
+    form.reset();
+    await reloadAndRender();
 
-    if (target.classList.contains("book-button")) {
-        // Navigate to the booking page for this activity
-        window.location.href = `/make-booking-page.html?activityId=${activityId}`;
-    }
-});
-
-
+}
 
 async function reloadAndRender() {
     try {
@@ -57,7 +81,9 @@ function renderRow(activity){
             <td>${activity.id}</td>
             <td>${activity.activityName}</td>
             <td>${activity.activityDescription}</td>
+            <td>${activity.minAge} år</td>
             <td>${activity.activityPrice} dkk</td>
+            
             <td>
                 <button class="delete-button" data-id="${activity.id}">Delete</button>
                 <button type="submit" class="book-button" data-id="${activity.id}">Book tid</button>
