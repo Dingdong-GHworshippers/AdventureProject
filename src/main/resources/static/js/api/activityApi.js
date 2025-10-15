@@ -12,7 +12,7 @@ export async function createActivity(activity){
 }
 
 export async function updateActivity(id, newActivity){
-    return put(`${BASE_URL}/${id}`, newActivity);
+    return put(`${ACTIVITY_URL}/${id}`, newActivity);
 }
 
 export async function deleteActivity(id){
