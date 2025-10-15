@@ -60,18 +60,9 @@ function renderRow(activity){
             <td>${activity.activityPrice} dkk</td>
             <td>
                 <button class="delete-button" data-id="${activity.id}">Delete</button>
-            </td>
-            <td>
                 <button type="submit" class="book-button" data-id="${activity.id}">Book tid</button>
-                
             </td>
         </tr>
     `;
     tableBody.insertAdjacentHTML("beforeend", html);
-}
-function fillBookEditForm(activity) {
-    document.querySelector("#id").value = activity.id;
-    document.querySelector("#name").value = activity.activityName;
-    document.querySelector("#description").value = activity.activityDescription;
-    document.querySelector("#price").value = activity.activityPrice;
 }

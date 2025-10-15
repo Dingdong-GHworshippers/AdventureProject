@@ -6,7 +6,7 @@ class AppHeader extends HTMLElement {
           <img src="/img/AA.png" alt="Adventure Alley Logo" class="logo">
           <div class="nav-links">
           <a href="index.html">Forside</a>
-          <a href="see-activities.html">Booking</a>
+          <a href="make-booking-page.html">Booking</a>
           <a href="about-us.html">Kontakt</a>
           <a href="gallery.html">Galleri</a>
           <a href="products.html">Produkter</a>
@@ -24,7 +24,7 @@ class AppFooter extends HTMLElement {
       <footer>
         <div class="footerMainDiv">
   <div class="column">
-    <a href="AboutUs.html"> Kort om os </a>
+    <strong class="strong-footer">Kort om os</strong> 
     <p>
      Hos Adventure Alley brænder vi for at skabe uforglemmelige oplevelser for både private og virksomheder.
     Vi tilbyder actionfyldte aktiviteter som gokart, paintball, sumobrydning og minigolf – alt sammen designet til at styrke fællesskab, konkurrence og grin.
