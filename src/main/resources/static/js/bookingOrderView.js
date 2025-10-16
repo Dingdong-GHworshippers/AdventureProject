@@ -24,20 +24,50 @@ async function loadOrders() {
     }
 }
 
-// Byg én række i tabellen
+
 function renderOrderRow(order) {
     const tr = document.createElement("tr");
 
-    // Booking ID fra booking-klassen
-    const bookingId = order.booking?.id ? `#${order.booking.id}` : "–";
 
-    // Produkter i ordren
+    const bookingId = order.booking?.id ? `#${order.booking.id}` : "–";
+    const customerName = order.booking?.customer?.name || "Ukendt";
+
+    const seen = new Set();
+    const activityList = order.booking?.activityTimeslots?.length
+        ? order.booking.activityTimeslots
+            .filter(ts => {
+                const key = `${ts.activity?.activityName}-${ts.startTime}`;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            })
+            .map(ts => {
+                const activityName = ts.activity?.activityName || "Ukendt aktivitet";
+                const date = ts.startTime ? new Date(ts.startTime).toLocaleDateString("da-DK") : "";
+                const start = ts.startTime ? new Date(ts.startTime).toLocaleTimeString("da-DK", { hour: "2-digit", minute: "2-digit" }) : "";
+                const end = ts.endTime ? new Date(ts.endTime).toLocaleTimeString("da-DK", { hour: "2-digit", minute: "2-digit" }) : "";
+                const employees = ts.employees?.length
+                    ? ts.employees.map(emp => emp.userName).join(", ")
+                    : "Ingen medarbejder tildelt";
+
+                return `
+                <b>${activityName}</b> – ${date} kl. ${start} til ${end}<br>
+                <small><i>Medarbejder(e): ${employees}</i></small>
+            `;
+            })
+            .join("<br><br>")
+        : "<i>Ingen aktiviteter</i>";
+
+
     const productList = order.products?.length
         ? order.products.map(p => `${p.name} (kr. ${p.price})`).join("<br>")
         : "<i>Ingen produkter</i>";
 
-    // Beregn total — ud fra de aktuelle produkter
-    const total = order.products?.reduce((sum, p) => sum + p.price, 0) || 0;
+    // Beregn total: produkter + bookingpris
+    const productTotal = order.products?.reduce((sum, p) => sum + p.price, 0) || 0;
+    const bookingPrice = order.booking?.price || 0;
+    const total = productTotal + bookingPrice;
+
 
     // Dropdown til at vælge produkt
     const productOptions = `
@@ -46,20 +76,26 @@ function renderOrderRow(order) {
     `;
 
     tr.innerHTML = `
-        <td>${order.id}</td>
-        <td>${bookingId}</td>
-        <td>${total.toFixed(2)} kr.</td>
-        <td>${productList}</td>
-        <td>
-            <select id="product-select-${order.id}" style="width:150px">
-                ${productOptions}
-            </select>
-            <button data-action="add-product" data-id="${order.id}">➕</button>
-        </td>
-        <td>
-            <button data-action="delete-order" data-id="${order.id}">🗑️ Slet</button>
-        </td>
-    `;
+    <td>${order.id}</td>
+    <td>${bookingId}</td>
+    <td>${activityList}</td>
+    <td>${customerName}</td>
+    <td>${productList}</td>
+    <td>
+        <select id="product-select-${order.id}" style="width:150px">
+            ${productOptions}
+        </select>
+        <button data-action="add-product" data-id="${order.id}">➕</button>
+    </td>
+    <td>
+        <b>Aktivitet:</b> ${bookingPrice.toFixed(2)} kr.<br>
+        <b>Produkter:</b> ${productTotal.toFixed(2)} kr.<br>
+        <b>Total:</b> ${total.toFixed(2)} kr.
+    </td>
+`;
+    const deleteTd = document.createElement("td");
+    deleteTd.innerHTML = `<button data-action="delete-order" data-id="${order.id}">🗑️ Slet</button>`;
+    tr.appendChild(deleteTd);
 
     // Tilføj knapper til at fjerne produkter
     if (order.products && order.products.length > 0) {

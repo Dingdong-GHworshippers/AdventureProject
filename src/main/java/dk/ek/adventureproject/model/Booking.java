@@ -1,5 +1,6 @@
 package dk.ek.adventureproject.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,9 +25,8 @@ public class Booking {
     @JsonManagedReference
     private List<ActivityTimeslot> activityTimeslots = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "booking_product_id" )
-    @JsonManagedReference
+    @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
+    @JsonBackReference
     private BookingOrder bookingOrder;
 
     @ManyToOne
