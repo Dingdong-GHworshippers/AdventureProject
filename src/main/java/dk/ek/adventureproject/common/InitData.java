@@ -75,7 +75,6 @@ public class InitData implements CommandLineRunner {
 
         // Setup booking 1
         BookingOrder order1 = new BookingOrder(null, 0.0, null, List.of(burger, soda));
-        bookingOrderService.save(order1);
 
         ActivityTimeslot paintballMorning = new ActivityTimeslot(
                 null,
@@ -97,11 +96,9 @@ public class InitData implements CommandLineRunner {
         paintballMorning.setBooking(booking1);
         booking1 = bookingService.createBooking(booking1); // Will include the activity price
 
-        activityTimeslotService.createActivityTimeslot(paintballMorning); // Optional if no cascade
 
         // Setup booking 2
         BookingOrder order2 = new BookingOrder(null, 0.0, null, List.of(tShirt));
-        bookingOrderService.save(order2);
 
         ActivityTimeslot curlingAfternoon = new ActivityTimeslot(
                 null,
@@ -122,8 +119,6 @@ public class InitData implements CommandLineRunner {
         );
         curlingAfternoon.setBooking(booking2);
         booking2 = bookingService.createBooking(booking2);
-
-        activityTimeslotService.createActivityTimeslot(curlingAfternoon); // Optional if cascade
 
         activityTimeslotService.generateTimeslotsForNextMonth();
     }

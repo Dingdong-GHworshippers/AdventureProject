@@ -49,6 +49,10 @@ public class BookingService {
             System.out.println(bookingPrices);
         }
 
+        System.out.println("Updating price for booking ID: " + booking.getId());
+        System.out.println("ActivityTimeslots: " + booking.getActivityTimeslots().size());
+        System.out.println("Products: " + booking.getBookingOrder().getProducts().size());
+
         return activityPrices + bookingPrices;
     }
 
@@ -112,6 +116,16 @@ public class BookingService {
         existingBooking.setPrice(booking.price());
 
         return bookingRepository.save(existingBooking);
+    }
+
+    public void updateAndSaveBookingPrice(Booking booking) {
+        double calculatedPrice = calculateBookingPrice(booking);
+        booking.setPrice(calculatedPrice);
+        bookingRepository.save(booking);
+        System.out.println("Updating price for booking ID: " + booking.getId());
+        System.out.println("ActivityTimeslots: " + booking.getActivityTimeslots().size());
+        System.out.println("Products: " + booking.getBookingOrder().getProducts().size());
+        System.out.println("Calculated price: " + calculatedPrice);
     }
 
     // Deletes booking

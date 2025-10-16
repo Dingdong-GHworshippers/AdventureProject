@@ -31,5 +31,15 @@ public class WebController {
         return "activity-timeslot-page";
     }
 
+    @GetMapping("/see-booking-order")
+    public String showBookingOrderPage(){
+        return "see-booking-order.html";
+    }
+
+    @GetMapping("/see-booking-order/{id}")
+    public String showBookingOrderById(){
+        return "see-booking-order.html";
+    }
+
 
 }
