@@ -30,4 +30,6 @@ public class WebController {
     public String showTimeslotDetailsPage() {
         return "activity-timeslot-page";
     }
+
+
 }
