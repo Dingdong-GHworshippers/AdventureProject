@@ -1,6 +1,7 @@
 package dk.ek.adventureproject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,8 +21,8 @@ public class BookingOrder {
     private double total;
 
     @OneToOne
-    @JoinColumn (name = "booking_id")
-    @JsonBackReference
+    @JoinColumn(name = "booking_id")
+    @JsonManagedReference
     private Booking booking;
 
     @ManyToMany

@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <title>Se Bookinger</title>
     <link rel="stylesheet" href="/css/see-bookings.css">
+    <link rel="stylesheet" href="/css/header-footer.css">
     <script type="module" src="js/bookingOrderView.js"></script>
 </head>
+<app-header></app-header>
 <body>
 <h1>Booking Orders</h1>
 
 <div class="back-container">
     <button id="back-button">← Tilbage</button>
 </div>
-
 <table>
     <thead>
     <tr>
         <th>ID</th>
         <th>Booking ID</th>
-        <th>Total</th>
+        <th>Aktivitet</th>
+        <th>Navn</th>
         <th>Produkter</th>
         <th>Tilføj produkt</th>
-        <th>Handling</th>
+        <th>Total</th>
+        <th>Fjern booking</th>
         <th>Fjern produkt</th>
     </tr>
     </thead>
@@ -32,6 +35,7 @@
         window.location.href = "/admin-page.html";
     });
 </script>
+<app-footer></app-footer>
 <script src="/js/headerAndFooter.js"></script>
 </body>
 </html>
