@@ -12,6 +12,16 @@
 </head>
 <body>
 <app-header></app-header>
+
+<form id="activity-form">
+    <input type="hidden" id="id" name="id" value>
+    <input type="text" id="activity-name" name="activity-name" placeholder="Aktivitetsnavn">
+    <input type="text" id="activity-description" name="activity-description" placeholder="Beskrivelse">
+    <input type="number" id="minAge" name="minAge" placeholder="Minimums alder">
+    <input type="number" id="activity-price" name="activity-price" placeholder="Pris">
+    <button type="submit" class="create-button">Tilføj aktivitet</button>
+</form>
+
 <table id="activity-table">
     <thead>
     <tr>

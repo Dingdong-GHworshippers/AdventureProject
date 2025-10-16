@@ -8,7 +8,6 @@ body {
     grid-template-rows: auto 1fr auto;
     display: grid;
     min-height: 100dvh;
-
 }
 
 button {
@@ -66,9 +65,79 @@ button {
 #activity-table{
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 50px;
+    justify-content: center;
 }
 #activity-table th,
 #activity-table td{
     border: 1px solid #ddd;
     padding: 8px;
+}
+
+/* === ACTIVITY FORM === */
+#activity-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem; /* space above table */
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Inputs */
+#activity-form input[type="text"],
+#activity-form input[type="number"] {
+    flex: 1;
+    min-width: 140px;
+    padding: 0.5rem 0.8rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#activity-form input:focus {
+    border-color: #22c55e;
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.4);
+    outline: none;
+}
+
+/* Submit button (same as .book-button) */
+#create-button,
+.create-button {
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-button:hover {
+    background-color: #16a34a;
+}
+
+/* Responsive adjustment */
+@media (max-width: 700px) {
+    #activity-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #activity-form input {
+        width: 100%;
+    }
+}
+
+.edit-button {
+    background-color: #f59e0b; /* orange-500 */
+}
+.edit-button:hover {
+    background-color: #d97706; /* orange-600 */
 }

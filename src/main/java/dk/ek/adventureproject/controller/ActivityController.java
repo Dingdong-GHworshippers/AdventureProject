@@ -40,7 +40,7 @@ public class ActivityController {
     }
 
     //Updates existing activity
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Activity> updateActivity(@RequestBody Activity activity, @PathVariable Long id){
         try {
             return ResponseEntity.ok(activityService.updateActivity(activity, id));

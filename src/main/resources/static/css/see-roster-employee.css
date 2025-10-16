@@ -8,7 +8,7 @@ html, body {
 /* Layout for roster and employees side by side */
 .content-layout {
     display: grid;
-    grid-template-columns: 1fr 2fr; /* roster = 1 part, employees = 2 parts */
+    grid-template-columns: 1fr 1fr; /* roster = 1 part, employees = 2 parts */
     gap: 2rem;
     padding: 2rem;
     width: 100%;
