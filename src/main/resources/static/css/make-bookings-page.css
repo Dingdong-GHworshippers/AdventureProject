@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f6fa;
+    font-family: Arial, sans-serif;
+}
+main{
+    min-height: 60vh;
+}
+/* Overskrift */
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #0f5132;
+}
+
+/* Back-knap container */
+.back-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 10px auto 20px auto; /* Lige under h1 */
+    display: flex;
+    justify-content: flex-start; /* knappen til venstre */
+}
+
+/* Back-knap */
+#back-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0f5132;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+#back-button:hover {
+    background-color: #5cae63;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Tabellen */
+table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1200px;
+    background-color: white;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px auto 40px auto;
+}
+
+/* Header-række */
+th {
+    background-color: #0f5132;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 14px 20px;
+    text-align: center;
+}
+
+/* Runde hjørner på toppen af tabellen */
+thead th:first-child {
+    border-top-left-radius: 8px;
+}
+thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* Zebra-striping på rækker */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Hover-effekt på rækker */
+tbody tr:hover {
+    background-color: #e8f0e8; /* blid grøn hover */
+}
+
+/* Celler */
+td {
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Input felter */
+input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Standard knapper */
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0f5132;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    background-color: #5cae63;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Fjern-knapper */
+.remove-buttons button {
+    margin: 2px;
+    background-color: #c82333;
+}
+
+.remove-buttons button:hover {
+    background-color: #f16a6a;
+}
+
+/* Main fylder plads */
+main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
