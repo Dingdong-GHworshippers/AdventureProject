@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Administrér Produkter – Adventure Alley</title>
+    <link rel="stylesheet" href="/css/header-footer.css">
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
+<app-header></app-header>
 
+<main class="admin-container">
+    <h2>Administrér Produkter</h2>
+
+    <!-- Formular til at oprette/redigere -->
+    <form id="product-form" class="admin-form">
+        <input type="hidden" id="product-id">
+
+        <label for="product-name">Navn:</label>
+        <input type="text" id="product-name" placeholder="Produktnavn" required>
+
+        <label for="product-type">Type:</label>
+        <select id="product-type" required>
+            <option value="">Vælg type...</option>
+            <option value="FOOD">Mad</option>
+            <option value="DRINK">Drikkevare</option>
+            <option value="MERCH">Merchandise</option>
+        </select>
+
+        <label for="product-price">Pris (kr):</label>
+        <input type="number" id="product-price" step="0.01" min="0" required>
+
+        <div class="form-buttons">
+            <button type="submit" class="btn-primary">💾 Gem produkt</button>
+            <button type="button" id="reset-btn" class="btn-secondary">❌ Nulstil</button>
+        </div>
+    </form>
+
+    <h3>Nuværende produkter</h3>
+
+    <table class="admin-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Navn</th>
+            <th>Type</th>
+            <th>Pris (kr)</th>
+            <th>Handlinger</th>
+        </tr>
+        </thead>
+        <tbody id="product-table-body">
+        <!-- Produkter indlæses her dynamisk -->
+        </tbody>
+    </table>
+</main>
+
+<app-footer></app-footer>
+
+<script src="/js/headerAndFooter.js"></script>
+<script type="module" src="/js/oversee-products.js"></script>
 </body>
 </html>
