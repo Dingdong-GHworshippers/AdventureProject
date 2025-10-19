@@ -17,7 +17,17 @@ const products = [
 async function loadOrders() {
     tbody.innerHTML = "";
     try {
-        const orders = await getAllBookingOrders();
+        let orders = await getAllBookingOrders();
+
+        // Checks if there is an id parameter in the url
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingOrderId = urlParams.get("id");
+
+        // Filter to only show the searched booking order
+        if (bookingOrderId) {
+            orders = orders.filter(order => order.id == bookingOrderId);
+        }
+
         orders.forEach(renderOrderRow);
     } catch (err) {
         console.error("Fejl ved hentning af ordrer:", err);

@@ -3,6 +3,7 @@ package dk.ek.adventureproject.controller;
 import dk.ek.adventureproject.model.BookingOrder;
 import dk.ek.adventureproject.model.Product;
 import dk.ek.adventureproject.service.BookingOrderService;
+import dk.ek.adventureproject.service.BookingService;
 import dk.ek.adventureproject.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,12 @@ public class BookingOrderController {
 
     private final BookingOrderService bookingOrderService;
     private final ProductService productService;
+    private final BookingService bookingService;
 
-    public BookingOrderController(BookingOrderService bookingOrderService, ProductService productService) {
+    public BookingOrderController(BookingOrderService bookingOrderService, ProductService productService, BookingService bookingService) {
         this.bookingOrderService = bookingOrderService;
         this.productService = productService;
+        this.bookingService = bookingService;
     }
 
     //get all bookings
@@ -76,6 +79,11 @@ public class BookingOrderController {
 
         order.getProducts().add(product);
         order.setTotal(order.getProducts().stream().mapToDouble(Product::getPrice).sum());
+
+        if (order.getBooking() != null){
+            bookingService.updateAndSaveBookingPrice(order.getBooking());
+        }
+
         BookingOrder updated = bookingOrderService.save(order);
 
         return ResponseEntity.ok(updated);
@@ -91,6 +99,11 @@ public class BookingOrderController {
 
         order.getProducts().remove(product);
         order.setTotal(order.getProducts().stream().mapToDouble(Product::getPrice).sum());
+
+        if (order.getBooking() != null){
+            bookingService.updateAndSaveBookingPrice(order.getBooking());
+        }
+
         BookingOrder updated = bookingOrderService.save(order);
 
         return ResponseEntity.ok(updated);
