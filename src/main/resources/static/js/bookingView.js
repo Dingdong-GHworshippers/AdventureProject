@@ -16,6 +16,13 @@ export function renderBookings(bookings, tableBodyEl) {
             return `<a href="/activity-timeslot-page.html?id=${id}">${name}</a>`;
         }).join(", ");
 
+
+        const bookingOrderId = booking.id;
+        const bookingLink = bookingOrderId
+            ? `<a href="/see-bookings.html?id=${bookingOrderId}">Tilføj produkter</a>`
+            : "Ikke tilgængelig";
+
+
         const startTimes = timeslots.map(ts => new Date(ts.startTime));
         const endTimes = timeslots.map(ts => new Date(ts.endTime));
 
@@ -37,6 +44,7 @@ export function renderBookings(bookings, tableBodyEl) {
             <td>${formattedEndTime}</td>
             <td>${activityLinks}</td>
             <td>${booking.minAge}</td>
+            <td>${bookingLink}</td>
             <td>${booking.price}</td>
            
             <td>

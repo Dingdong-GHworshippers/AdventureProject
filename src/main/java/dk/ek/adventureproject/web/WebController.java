@@ -80,5 +80,8 @@ public class WebController {
     public String showSeeBookingsPage() {
         return "see-bookings.html";
     }
-
+    @GetMapping("/see-booking-order")
+    public String showBookingOrderPage(){
+        return "see-booking-order.html";
+    }
 }

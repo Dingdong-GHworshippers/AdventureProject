@@ -17,7 +17,17 @@ const products = [
 async function loadOrders() {
     tbody.innerHTML = "";
     try {
-        const orders = await getAllBookingOrders();
+        let orders = await getAllBookingOrders();
+
+        // Checks if there is an id parameter in the url
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingOrderId = urlParams.get("id");
+
+        // Filter to only show the searched booking order
+        if (bookingOrderId) {
+            orders = orders.filter(order => order.id == bookingOrderId);
+        }
+
         orders.forEach(renderOrderRow);
     } catch (err) {
         console.error("Fejl ved hentning af ordrer:", err);
@@ -32,31 +42,6 @@ function renderOrderRow(order) {
     const bookingId = order.booking?.id ? `#${order.booking.id}` : "–";
     const customerName = order.booking?.customer?.name || "Ukendt";
 
-    const seen = new Set();
-    const activityList = order.booking?.activityTimeslots?.length
-        ? order.booking.activityTimeslots
-            .filter(ts => {
-                const key = `${ts.activity?.activityName}-${ts.startTime}`;
-                if (seen.has(key)) return false;
-                seen.add(key);
-                return true;
-            })
-            .map(ts => {
-                const activityName = ts.activity?.activityName || "Ukendt aktivitet";
-                const date = ts.startTime ? new Date(ts.startTime).toLocaleDateString("da-DK") : "";
-                const start = ts.startTime ? new Date(ts.startTime).toLocaleTimeString("da-DK", { hour: "2-digit", minute: "2-digit" }) : "";
-                const end = ts.endTime ? new Date(ts.endTime).toLocaleTimeString("da-DK", { hour: "2-digit", minute: "2-digit" }) : "";
-                const employees = ts.employees?.length
-                    ? ts.employees.map(emp => emp.userName).join(", ")
-                    : "Ingen medarbejder tildelt";
-
-                return `
-                <b>${activityName}</b> – ${date} kl. ${start} til ${end}<br>
-                <small><i>Medarbejder(e): ${employees}</i></small>
-            `;
-            })
-            .join("<br><br>")
-        : "<i>Ingen aktiviteter</i>";
 
 
     const productList = order.products?.length
@@ -78,7 +63,6 @@ function renderOrderRow(order) {
     tr.innerHTML = `
     <td>${order.id}</td>
     <td>${bookingId}</td>
-    <td>${activityList}</td>
     <td>${customerName}</td>
     <td>${productList}</td>
     <td>
