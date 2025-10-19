@@ -27,5 +27,6 @@ form.addEventListener("submit", async (e) => {
         window.location.href = "/admin-page.html";
     } catch (err) {
         errorP.textContent = err.message;
+
     }
 });
