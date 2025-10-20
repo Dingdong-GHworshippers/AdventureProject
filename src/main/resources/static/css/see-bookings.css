@@ -6,6 +6,11 @@ body {
     min-height: 100vh;
 }
 
+main{
+    min-height: 65vh;
+
+}
+
 /* Overskrift */
 h1 {
     text-align: center;

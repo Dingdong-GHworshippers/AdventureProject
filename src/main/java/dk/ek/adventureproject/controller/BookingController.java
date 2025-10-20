@@ -46,6 +46,7 @@ public class BookingController {
     but we do need to add the customer and activity timeslots to the booking, and we need to set the booking on each
     activity timeslot converted from the bookingRequestDTO.
     */
+
     @PostMapping
     public ResponseEntity<Booking> createBooking(@RequestBody BookingRequestDTO bookingRequestDTO){
         Customer customer = mapper.requestDtoToCustomer(bookingRequestDTO);
